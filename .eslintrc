@@ -4,7 +4,8 @@
     "react"
   ],
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "space-in-parens": [ 0, "always" ],
