@@ -8,18 +8,28 @@ class ArticleForm extends React.Component{
             intro: '',
             image: '',
             content: '',
-            categories: [
-                { id: 0, label: 'Programming', checked: false }, 
-                { id: 1, label: 'Teamwork', checked: false }, 
-                { id: 2, label: 'Productivity', checked: false }, 
-                { id: 3, label: 'Lifestyle', checked: false }
-            ],
+            categories: [],
             errorValidation: false
         }
 
         this.onChangeCategory = this.onChangeCategory.bind(this)
         this.onChangeField = this.onChangeField.bind(this)
         this.onSendArticle = this.onSendArticle.bind(this)
+    }
+
+    componentDidMount(){
+        fetch(`${ process.env.REACT_APP_API }/categories`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            data.map((category) => {
+                this.setState((state) => {
+                    state.categories.push(Object.assign({}, category, { checked: false }))
+                    return state
+                })
+            })
+        })
     }
 
     onChangeField(event){
@@ -32,7 +42,7 @@ class ArticleForm extends React.Component{
     onChangeCategory(categorySelected){
         this.setState( (state) => {
             const updatedCategories = state.categories.map((category) => {
-                if(category.label === categorySelected.label){
+                if(category.name === categorySelected.name){
                     return Object.assign({}, category, { checked: !category.checked })
                 }
                 return category
@@ -91,11 +101,11 @@ class ArticleForm extends React.Component{
                     return (
                       <span key={ category.id }>
                         <input type="checkbox" 
-                        value={ category.label } 
+                        value={ category.name } 
                         checked={ category.checked }
                         onChange={ () => this.onChangeCategory(category) }
                         />
-                        <label>{ category.label }</label>
+                        <label>{ category.name }</label>
                       </span>
                     )
                 }) 
