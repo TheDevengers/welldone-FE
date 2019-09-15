@@ -9,7 +9,8 @@ class ArticleForm extends React.Component{
             image: '',
             content: '',
             categories: [],
-            errorValidation: false
+            errorValidation: false,
+            error: false
         }
 
         this.onChangeCategory = this.onChangeCategory.bind(this)
@@ -57,15 +58,31 @@ class ArticleForm extends React.Component{
 
     onSendArticle(articleState){
         this.validateArticle()
-        if(this.state.errorValidation){
-             //Send post request to publish/save with new article
+        if(!this.state.errorValidation){
+            fetch(`${ process.env.REACT_APP_API }/articles`, {
+              method: 'POST',
+              body: JSON.stringify({
+                title: this.state.title,
+                introduction: this.state.intro,
+                state: articleState,
+                body: this.state.content,
+                image: this.state.image ? this.state.image : '',
+                categories: this.checkCategoriesSelected(),
+                user_id: process.env.REACT_APP_USER_ID
+              }),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+              .then((response) => {
+                return response.json();
+              }).catch( (error) => this.setState({ error: true }))
         }
-       
     }
 
     validateArticle(){
-        const { title, intro, image, categories } = this.state
-        if(!title.length || !intro.length || !image.length || !this.checkCategoriesSelected().length){
+        const { title, intro, image } = this.state
+        if(!title.length || !intro.length || !this.checkCategoriesSelected().length){
             this.setState({
                 errorValidation: true
             })
@@ -82,8 +99,8 @@ class ArticleForm extends React.Component{
 
     render(){
 
-        const { title, intro, image, categories, errorValidation } = this.state
-        const ARTICLE_STATE = [ 'PUBLISH', 'DRAFT' ]
+        const { title, intro, image, categories } = this.state
+        const ARTICLE_STATE = [ 'PB', 'DR' ]
 
         return (
           <form>
@@ -92,7 +109,7 @@ class ArticleForm extends React.Component{
             <label htmlFor="intro">Intro</label>
             <input type="text" id="intro" name="intro" value={ intro } onChange={ (e) => this.onChangeField(e) } required/>
             <label htmlFor="image">Image</label>
-            <input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } required/>
+            <input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
             <label htmlFor="content">Content</label>
             <textarea id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
             <div>
