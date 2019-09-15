@@ -1,4 +1,5 @@
 import React from 'react'
+import { createArticle, retrieveCategories } from '../../utils/apiArticle.js'
 
 class ArticleForm extends React.Component{
     constructor(props){
@@ -9,7 +10,6 @@ class ArticleForm extends React.Component{
             image: '',
             content: '',
             categories: [],
-            errorValidation: false,
             error: false
         }
 
@@ -18,19 +18,16 @@ class ArticleForm extends React.Component{
         this.onSendArticle = this.onSendArticle.bind(this)
     }
 
-    componentDidMount(){
-        fetch(`${ process.env.REACT_APP_API }/categories`)
-        .then((response) => {
-            return response.json()
+    async componentDidMount(){
+      let categories = await retrieveCategories()
+      if(categories.length){
+        categories.map((category) => {
+          this.setState((state) => {
+              state.categories.push(Object.assign({}, category, { checked: false }))
+              return state
+          })
         })
-        .then((data) => {
-            data.map((category) => {
-                this.setState((state) => {
-                    state.categories.push(Object.assign({}, category, { checked: false }))
-                    return state
-                })
-            })
-        })
+      }
     }
 
     onChangeField(event){
@@ -56,49 +53,15 @@ class ArticleForm extends React.Component{
         })
     }
 
-    onSendArticle(articleState){
-        this.validateArticle()
-        if(!this.state.errorValidation){
-            fetch(`${ process.env.REACT_APP_API }/articles`, {
-              method: 'POST',
-              body: JSON.stringify({
-                title: this.state.title,
-                introduction: this.state.intro,
-                state: articleState,
-                body: this.state.content,
-                image: this.state.image ? this.state.image : '',
-                categories: this.checkCategoriesSelected(),
-                user_id: process.env.REACT_APP_USER_ID
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            })
-              .then((response) => {
-                return response.json();
-              }).catch( (error) => this.setState({ error: true }))
-        }
-    }
+    async onSendArticle(articleState){
+      const result = await createArticle(Object.assign({}, this.state, {state: articleState}))
 
-    validateArticle(){
-        const { title, intro, image } = this.state
-        if(!title.length || !intro.length || !this.checkCategoriesSelected().length){
-            this.setState({
-                errorValidation: true
-            })
-        }
-    }
-
-    checkCategoriesSelected(){
-        const categoriesSelected = this.state.categories.filter((category) => {
-            return true ? category.checked : false
-        })
-
-        return categoriesSelected
+      if(!result){
+        this.setState({ error: true })
+      }
     }
 
     render(){
-
         const { title, intro, image, categories } = this.state
         const ARTICLE_STATE = [ 'PB', 'DR' ]
 
