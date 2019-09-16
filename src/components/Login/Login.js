@@ -12,10 +12,10 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Login = () => (
-  <div>
-    <div className="login-icon-container">
+  <div className={styles.login_container}>
+    <div className={styles.icon_container}>
       <picture>
-        <img data-cy="login-image" src={logo} alt="movie" className="login-img" />
+        <img data-cy="login-image" src={logo} alt="movie" className={styles.logo} />
       </picture>
     </div>
     <Formik
@@ -30,8 +30,8 @@ const Login = () => (
     >
       {({ handleSubmit, errors, touched, handleChange, values }) => (
         <form onSubmit={handleSubmit} noValidate>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className={styles.form_group}>
+            <label className={styles.form_label} htmlFor="email">Email:</label>
             <Input
               type="email"
               name="email"
@@ -41,11 +41,11 @@ const Login = () => (
               value={values.email}
             />
             {errors.email && touched.email ? (
-              <div>{errors.email}</div>
+              <div className={styles.error}>{errors.email}</div>
             ) : null}
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
+          <div className={styles.form_group}>
+            <label className={styles.form_label} htmlFor="password">Password:</label>
             <Input
               type="password"
               name="password"
@@ -55,7 +55,7 @@ const Login = () => (
               value={values.password}
             />
             {errors.password && touched.password ? (
-              <div>{errors.password}</div>
+              <div className={styles.error}>{errors.password}</div>
             ) : null}
           </div>
           <Button className={styles.prueba}
