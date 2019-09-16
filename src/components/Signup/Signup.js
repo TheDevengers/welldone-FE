@@ -22,9 +22,11 @@ const SignupSchema = Yup.object().shape({
     confirmPassword:  Yup.string()
         .oneOf([ Yup.ref('password'), null ], 'Passwords must match')
         .required('Confirm Password is required'),
-    datejoined: Yup.date().default(function() {
-            return new Date();
-    }), 
+    datejoined: Yup.date()
+        .required,
+
+    birthdate: Yup.date(),
+
 });
 
 const Signup = () => (
@@ -49,13 +51,14 @@ const Signup = () => (
       validationSchema={ SignupSchema }
 
       onSubmit={ (values) => {
-        console.log(values)
-        values.datejoined = () => new Date()
+              
+        values.datejoined = new Date(JSON.parse(JSON.stringify(new Date())))
+        console.log(values)  
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(values, null, 4))
       } }
 
     >
-      {({ handleSubmit, errors, touched, handleChange, values, setFieldValue }) => (
+      {({ errors, touched, isSubmitting, handleReset, values, setFieldValue, dirty }) => (
         <Form>
           
           <div className="form-group">
@@ -89,6 +92,9 @@ const Signup = () => (
           </div>
 
           <Button type="submit">Submit</Button>
+          <button type="button" className="outline" onClick={ handleReset } disabled={ !dirty || isSubmitting } >
+            Reset
+          </button>
         </Form>
       )}
     </Formik>
