@@ -2,7 +2,15 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 8px;
-  padding: 8px 4px;
+  padding: 8px 0;
   display: block;
   width: 100%;
+}
+
+::placeholder {
+  padding-left: 10px;
+}
+
+.error {
+  border: 1px solid red;
 }

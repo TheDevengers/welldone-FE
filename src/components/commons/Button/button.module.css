@@ -1,9 +1,10 @@
 .defaultButton {
-  background: #8d00ff;
+  background: #118060;
   border-radius: 3px;
   color: #fff;
   height: 32px;
   display: block;
   width: 100%;
+  border: none;
   text-align: center;
 }
