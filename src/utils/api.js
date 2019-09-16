@@ -1,7 +1,8 @@
 const api = () => {
+  const BASE_URL = 'http://localhost:8000/api/v1/';
   return {
     postUser: (data) => {
-      return fetch('http://localhost:8000/api/token/', {
+      return fetch(`${ BASE_URL }token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

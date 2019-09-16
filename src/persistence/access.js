@@ -9,7 +9,8 @@ export const doLogin =  (values) =>
   .then(({ access: accessKey }) => {
     set('accessKey', accessKey);
     window.location.href = '/';
-  });
+  })
+  .catch(() => new Error());
 
 export const logout = () => {
   set('accessKey', null);
