@@ -23,10 +23,21 @@ const SignupSchema = Yup.object().shape({
         .oneOf([ Yup.ref('password'), null ], 'Passwords must match')
         .required('Confirm Password is required'),
     datejoined: Yup.date()
-        .required,
-
+        .required(),
+    firstname:Yup.string()
+        .min(2, 'Must be between 2 and 30 characters')
+        .max(30, 'Must be between 2 and 30 characters'),
+    lastname: Yup.string()
+        .min(4, 'Must be between 4 and 150 characters')
+        .max(150, 'Must be between 4 and 150 characters'),
+    description: Yup.string()
+        .min(1, 'Must be between 1 and 200 characters')
+        .max(200, 'Must be between 4 and 200 characters'),
     birthdate: Yup.date(),
-
+    birthplace: Yup.string()
+        .min(1, 'Must be between 1 and 100 characters')
+        .max(100, 'Must be between 4 and 100 characters')
+    
 });
 
 const Signup = () => (
@@ -59,30 +70,53 @@ const Signup = () => (
 
     >
       {({ errors, touched, isSubmitting, handleReset, values, setFieldValue, dirty }) => (
-        <Form>
-          
+        <Form noValidate>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="firstname">First Name:</label>
+            <Field name="firstname" type="text" className={ 'form-control' + (errors.firstname && touched.firstname ? ' is-invalid' : '') } />
+            <ErrorMessage name="firstname" component="div" className="invalid-feedback" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="lastname">Last Name:</label>
+            <Field name="lastname" type="text" className={ 'form-control' + (errors.lastname && touched.lastname ? ' is-invalid' : '') } />
+            <ErrorMessage name="lastname" component="div" className="invalid-feedback" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description">Description:</label>
+            <Field name="description" component="textarea" type="text" className={ 'form-control' + (errors.description && touched.description ? ' is-invalid' : '') } />
+            <ErrorMessage name="description" component="div" className="invalid-feedback" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="username">* Username:</label>
             <Field name="username" type="text" className={ 'form-control' + (errors.username && touched.username ? ' is-invalid' : '') } />
             <ErrorMessage name="username" component="div" className="invalid-feedback" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">* Email:</label>
             <Field name="email" type="text" className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '') } />
             <ErrorMessage name="email" component="div" className="invalid-feedback" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">* Password</label>
             <Field name="password" type="password" className={ 'form-control' + (errors.password && touched.password ? ' is-invalid' : '') } />
             <ErrorMessage name="password" component="div" className="invalid-feedback" />
           </div>
             
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">* Confirm Password</label>
             <Field name="confirmPassword" type="password" className={ 'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '') } />
             <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="birthplace">Birth Place:</label>
+            <Field name="birthplace" type="text" className={ 'form-control' + (errors.birthplace && touched.birthplace ? ' is-invalid' : '') } />
+            <ErrorMessage name="birthplace" component="div" className="invalid-feedback" />
           </div>
 
           <div className="form-group">
