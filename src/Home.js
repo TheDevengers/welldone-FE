@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { LogoSimple } from './components/commons/Logo/LogoSimple';
+import { LogoLarge } from './components/commons/Logo/LogoLarge';
 
 function Home() {
   return (
@@ -10,6 +12,8 @@ function Home() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <LogoSimple />
+        <LogoLarge />
         <a
           className="App-link"
           href="https://reactjs.org"
