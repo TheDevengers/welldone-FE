@@ -6,11 +6,7 @@ import styles from './login.module.css';
 import logo from '../../assets/logo-beta.png';
 import { Input, Button } from '../commons';
 
-import api from '../../utils/api';
-import cookieStorage from '../../utils/cookieStorage';
-
-const { postUser } = api();
-const { set } = cookieStorage();
+import { doLogin } from '../../persistence/access';
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string().required('Username is required'),
@@ -30,9 +26,7 @@ const Login = () => (
         password: ''
       }}
       validationSchema={SignupSchema}
-      onSubmit={(values) => {
-        postUser(values);
-      }}
+      onSubmit={(values) => doLogin(values)}
     >
       {({ handleSubmit, errors, touched, handleChange, values }) => (
         <form className={styles.form} onSubmit={handleSubmit} noValidate>

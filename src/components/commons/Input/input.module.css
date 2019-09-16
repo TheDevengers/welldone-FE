@@ -2,13 +2,8 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 8px;
-  padding: 8px 0;
+  padding: 8px 0 8px 10px;
   display: block;
-  width: 100%;
-}
-
-::placeholder {
-  padding-left: 10px;
 }
 
 .error {
