@@ -1,0 +1,41 @@
+.login_container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+}
+
+.icon_container {
+  margin-top: 30px;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
+}
+
+.form {
+  width: 90%;
+}
+
+.form_group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form_label {
+  padding-left: 8px;
+  margin-bottom: 8px;
+}
+
+.error {
+  color: red;
+  padding: 2px;
+}
+
+@media (min-width: 450px) {
+  .form {
+    width: 70%;
+  }
+}
