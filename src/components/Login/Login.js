@@ -8,7 +8,7 @@ import { Input, Button } from '../commons';
 
 import { doLogin } from '../../persistence/access';
 
-const SignupSchema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
   username: Yup.string().required('Username is required'),
   password: Yup.string().required('Password is required')
 });
@@ -25,7 +25,7 @@ const Login = () => (
         username: '',
         password: ''
       }}
-      validationSchema={SignupSchema}
+      validationSchema={LoginSchema}
       onSubmit={(values) => doLogin(values)}
     >
       {({ handleSubmit, errors, touched, handleChange, values }) => (
