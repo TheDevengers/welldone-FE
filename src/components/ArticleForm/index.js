@@ -1,6 +1,7 @@
 import React from 'react';
 import { createArticle, retrieveCategories } from '../../utils/apiArticle.js';
 import { Input, Button } from '../commons';
+import styles from './articleForm.module.css';
 
 class ArticleForm extends React.Component{
     constructor(props){
@@ -66,34 +67,40 @@ class ArticleForm extends React.Component{
 
         return (
           // TODO Show error modal or message
-          <form>
-            <label htmlFor="title">Title</label>
-            <Input type="text" id="title" name="title" value={ title } onChange={ (e) => this.onChangeField(e) } required/>
-            <label htmlFor="intro">Intro</label>
-            <Input type="text" id="intro" name="intro" value={ intro } onChange={ (e) => this.onChangeField(e) } required/>
-            <label htmlFor="image">Image</label>
-            <Input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
-            <label htmlFor="content">Content</label>
-            <textarea id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
-            <div>
-              {
-                categories.map((category) => {
-                    return (
-                      <span key={ category.id }>
-                        <input type="checkbox" 
-                        value={ category.name } 
-                        checked={ category.checked }
-                        onChange={ () => this.onChangeCategory(category) }
-                        />
-                        <label>{ category.name }</label>
-                      </span>
-                    );
-                }) 
-            }
-            </div>
-            <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 0 ]) }>Publish</Button>
-            <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 1 ]) }> Save as a draft </Button>
-          </form>
+          <div className={styles.article_form_container}>
+            <form className={styles.form}>
+              <div className={styles.form_group}>
+                <label className={styles.form_label} htmlFor="title" >Title</label>
+                <Input type="text" id="title" name="title" value={ title } onChange={ (e) => this.onChangeField(e) } required/>
+                <label className={styles.form_label} htmlFor="intro">Intro</label>
+                <Input type="text" id="intro" name="intro" value={ intro } onChange={ (e) => this.onChangeField(e) } required/>
+                <label className={styles.form_label} htmlFor="image">Image</label>
+                <Input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
+                <label className={styles.form_label} htmlFor="content">Content</label>
+                <textarea id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
+                <div>
+                  {
+                    categories.map((category) => {
+                        return (
+                          <span key={ category.id }>
+                            <input type="checkbox" 
+                            value={ category.name } 
+                            checked={ category.checked }
+                            onChange={ () => this.onChangeCategory(category) }
+                            />
+                            <label>{ category.name }</label>
+                          </span>
+                        );
+                    }) 
+                }
+                </div>
+                <div className={styles.article_form__buttonGroup}>
+                  <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 0 ]) }>Publish</Button>
+                  <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 1 ]) }> Save As A Draft </Button>
+                </div>
+              </div>
+            </form>
+          </div>
         );
     }
 }

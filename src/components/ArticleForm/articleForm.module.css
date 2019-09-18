@@ -1,0 +1,34 @@
+.article_form_container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+}
+
+.form {
+  width: 90%;
+}
+
+.form_group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form_label {
+  padding-left: 8px;
+  margin-bottom: 8px;
+}
+
+.article_form__buttonGroup {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+@media (min-width: 450px) {
+  .form {
+    width: 70%;
+  }
+}
