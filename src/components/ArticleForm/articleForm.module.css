@@ -20,7 +20,20 @@
   margin-bottom: 8px;
 }
 
-.article_form__buttonGroup {
+.form_textarea {
+  padding: 8px 0 8px 10px;
+  margin-bottom: 8px;
+}
+
+.form_choices {
+  margin-bottom: 8px;
+}
+
+.form_choice {
+    padding-right: 8px;
+}
+
+.form__buttonGroup {
   display: grid;
   grid-template-columns: 48% 48%;
   margin-top: 10px;

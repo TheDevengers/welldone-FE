@@ -77,24 +77,25 @@ class ArticleForm extends React.Component{
                 <label className={styles.form_label} htmlFor="image">Image</label>
                 <Input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
                 <label className={styles.form_label} htmlFor="content">Content</label>
-                <textarea id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
-                <div>
+                <textarea className={styles.form_textarea} id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
+                <label className={styles.form_label}>Categories</label>
+                <div className={styles.form_choices}>
                   {
                     categories.map((category) => {
                         return (
-                          <span key={ category.id }>
+                          <span key={ category.id } className={styles.form_choice}>
                             <input type="checkbox" 
                             value={ category.name } 
                             checked={ category.checked }
                             onChange={ () => this.onChangeCategory(category) }
                             />
-                            <label>{ category.name }</label>
+                            <span>{ category.name }</span>
                           </span>
                         );
                     }) 
                 }
                 </div>
-                <div className={styles.article_form__buttonGroup}>
+                <div className={styles.form__buttonGroup}>
                   <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 0 ]) }>Publish</Button>
                   <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 1 ]) }> Save As A Draft </Button>
                 </div>
