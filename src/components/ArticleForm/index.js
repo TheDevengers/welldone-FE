@@ -19,7 +19,7 @@ class ArticleForm extends React.Component{
     }
 
     async componentDidMount(){
-      let categories = await retrieveCategories()
+      const categories = await retrieveCategories()
       if(categories.length){
         categories.map((category) => {
           this.setState((state) => {
