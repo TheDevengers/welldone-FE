@@ -1,21 +1,21 @@
 const checkCategoriesSelected = (categories) => {
     const categoriesSelected = categories.filter((category) => {
-        return true ? category.checked : false
-    })
-    return categoriesSelected
-}
+        return true ? category.checked : false;
+    });
+    return categoriesSelected;
+};
 
 const validateArticle = ({ title, intro, content, categories } ) => {
-    let isValid = false
+    let isValid = false;
 
     if(title.length && intro.length && content.length && checkCategoriesSelected(categories).length){
-        isValid = true
+        isValid = true;
     }
-    return isValid
-}
+    return isValid;
+};
 
 const createArticle = async (article) => {
-    let success = false
+    let success = false;
 
     if(validateArticle(article)){
         await fetch(`${ process.env.REACT_APP_API }/articles`, 
@@ -35,28 +35,28 @@ const createArticle = async (article) => {
             }
         })
         .then(() => {
-            success = true
-        })
+            success = true;
+        });
     }
-    return success
-}
+    return success;
+};
 
 const retrieveCategories = async () => {
 
-    let categories = []
+    let categories = [];
 
     await fetch(`${ process.env.REACT_APP_API }/categories`)
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((data) => {
-            categories = categories.concat(data)
-        })
+            categories = categories.concat(data);
+        });
     
-    return categories
-}
+    return categories;
+};
 
 export {
     createArticle,
     retrieveCategories
-}
+};
