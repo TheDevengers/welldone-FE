@@ -54,7 +54,7 @@ class ArticleForm extends React.Component{
     }
 
     async onSendArticle(articleState){
-      const result = await createArticle(Object.assign({}, this.state, {state: articleState}))
+      const result = await createArticle(Object.assign({}, this.state, { state: articleState }))
 
       if(!result){
         this.setState({ error: true })
