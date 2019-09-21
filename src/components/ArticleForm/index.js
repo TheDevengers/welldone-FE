@@ -53,7 +53,8 @@ class ArticleForm extends React.Component{
         });
     }
 
-    async onSendArticle(articleState){
+    async onSendArticle(e, articleState){
+      e.preventDefault();
       const result = await createArticle(Object.assign({}, this.state, { state: articleState }));
 
       if(!result){
@@ -77,7 +78,7 @@ class ArticleForm extends React.Component{
                 <label className={styles.form_label} htmlFor="image">Image</label>
                 <Input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
                 <label className={styles.form_label} htmlFor="content">Content</label>
-                <textarea className={styles.form_textarea} id="content" name="content" onChange={ (e) => this.onChangeField(e) } required/>
+                <textarea className={styles.form_textarea} id="content" name="content" onChange={ (e) => this.onChangeField(e) } rows="20" required/>
                 <label className={styles.form_label}>Categories</label>
                 <div className={styles.form_choices}>
                   {
@@ -96,8 +97,8 @@ class ArticleForm extends React.Component{
                 }
                 </div>
                 <div className={styles.form__buttonGroup}>
-                  <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 0 ]) }>Publish</Button>
-                  <Button onClick={ ()=> this.onSendArticle(ARTICLE_STATE[ 1 ]) }> Save As A Draft </Button>
+                  <Button onClick={ (e)=> this.onSendArticle(e, ARTICLE_STATE[ 0 ]) }>Publish</Button>
+                  <Button onClick={ (e)=> this.onSendArticle(e, ARTICLE_STATE[ 1 ]) }> Save As A Draft </Button>
                 </div>
               </div>
             </form>
