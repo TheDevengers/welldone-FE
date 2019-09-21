@@ -15,10 +15,8 @@ const validateArticle = ({ title, intro, content, categories } ) => {
 };
 
 const createArticle = async (article) => {
-    let success = false;
-
     if(validateArticle(article)){
-        await fetch(`${ process.env.REACT_APP_API }/articles`, 
+        return await fetch(`${ process.env.REACT_APP_API }/articles`, 
         {
             method: 'POST',
             body: JSON.stringify({
@@ -34,11 +32,10 @@ const createArticle = async (article) => {
                 'Content-Type': 'application/json'
             }
         })
-        .then(() => {
-            success = true;
+        .then((response) => {
+            return response;
         });
     }
-    return success;
 };
 
 const retrieveCategories = async () => {

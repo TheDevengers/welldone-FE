@@ -1,6 +1,6 @@
 import React from 'react';
 import { createArticle, retrieveCategories } from '../../utils/apiArticle.js';
-import { Input, Button } from '../commons';
+import { Input, Button, ModalBox } from '../commons';
 import styles from './articleForm.module.css';
 
 class ArticleForm extends React.Component{
@@ -18,6 +18,7 @@ class ArticleForm extends React.Component{
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeField = this.onChangeField.bind(this);
         this.onSendArticle = this.onSendArticle.bind(this);
+        this.onHandleCloseModal = this.onHandleCloseModal.bind(this);
     }
 
     async componentDidMount(){
@@ -57,18 +58,25 @@ class ArticleForm extends React.Component{
       e.preventDefault();
       const result = await createArticle(Object.assign({}, this.state, { state: articleState }));
 
-      if(!result){
+      if(!result.ok){
         this.setState({ error: true });
       }
     }
 
+    onHandleCloseModal(){
+      this.setState({ error: false });
+    };
+
     render(){
-        const { title, intro, image, categories } = this.state;
+        const { title, intro, image, categories, error } = this.state;
         const ARTICLE_STATE = [ 'PB', 'DR' ];
 
         return (
-          // TODO Show error modal or message
           <div className={styles.article_form_container}>
+            {error ? (
+              <ModalBox message="There is a problem to create a new article. Try again!" open={error} onClose={this.onHandleCloseModal}></ModalBox>
+              ) : null
+            }
             <form className={styles.form}>
               <div className={styles.form_group}>
                 <label className={styles.form_label} htmlFor="title" >Title</label>
