@@ -14,14 +14,9 @@ class ArticleForm extends React.Component{
             categories: [],
             error: false
         };
-
-        this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onChangeField = this.onChangeField.bind(this);
-        this.onSendArticle = this.onSendArticle.bind(this);
-        this.onHandleCloseModal = this.onHandleCloseModal.bind(this);
     }
 
-    async componentDidMount(){
+    componentDidMount = async() => {
       const categories = await retrieveCategories();
       if(categories.length){
         categories.map((category) => {
@@ -33,13 +28,13 @@ class ArticleForm extends React.Component{
       }
     }
 
-    onChangeField(event){
+    onChangeField = (event) => {
         this.setState({
             [ event.target.name ]: event.target.value
         });
     }
 
-    onChangeCategory(categorySelected){
+    onChangeCategory = (categorySelected)=>{
         this.setState( (state) => {
             const updatedCategories = state.categories.map((category) => {
                 if(category.name === categorySelected.name){
@@ -54,7 +49,7 @@ class ArticleForm extends React.Component{
         });
     }
 
-    async onSendArticle(e, articleState){
+    onSendArticle = async(e, articleState) =>{
       e.preventDefault();
       const result = await createArticle(Object.assign({}, this.state, { state: articleState }));
 
@@ -63,7 +58,7 @@ class ArticleForm extends React.Component{
       }
     }
 
-    onHandleCloseModal(){
+    onHandleCloseModal = () => {
       this.setState({ error: false });
     };
 
