@@ -48,7 +48,7 @@ class Signup extends Component {
         dataError: result
       })
 
-      if (result.error === false) {
+      if (result && !result.error) {
         // redigir a login
         this.props.history.push('/')
       }
