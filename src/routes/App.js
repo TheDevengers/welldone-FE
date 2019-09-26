@@ -9,7 +9,6 @@ import { Nav, Footer } from '../components/commons';
 
 const App = () => (
   <Router>
-    <Nav />
     <Switch>
       <Route path="/login" exact component={Login}/>
       <PrivateRoute path="/" redirectRoute="/login" exact component={Home}/>
