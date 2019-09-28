@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const LogoSimple = (props) => (
   <svg
@@ -48,4 +48,4 @@ export const LogoSimple = (props) => (
     />
     <style />
   </svg>
-)
+);

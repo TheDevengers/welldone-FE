@@ -6,6 +6,7 @@ import Home from '../Home';
 import Login from '../components/Login/Login.js';
 import Signup from '../components/Signup/Signup.js';
 import ArticleForm from '../components/ArticleForm';
+import { Nav, Footer } from '../components/commons';
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
       <PrivateRoute path="/" redirectRoute="/login" exact component={Home}/>
       <PrivateRoute path="/create-article" exact component={ArticleForm} />
     </Switch>
+    <Footer />
   </Router>
 );
 
