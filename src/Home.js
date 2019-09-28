@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { LogoSimple } from './components/commons/Logo/LogoSimple';
-import { LogoLarge } from './components/commons/Logo/LogoLarge';
+import { logout } from './persistence/access';
 
 function Home() {
   return (
     <div className="App">
+      <button onClick={logout}>LOGOUT</button>
       <header className="App-header">
         <img src={ logo } className="App-logo" alt="logo" />
         <p>

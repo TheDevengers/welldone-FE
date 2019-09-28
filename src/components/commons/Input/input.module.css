@@ -1,8 +1,11 @@
 .defaultInput {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 8px;
-    padding: 8px 4px;
-    display: block;
-    width: 100%;
-  }
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  padding: 8px 0 8px 10px;
+  display: block;
+}
+
+.error {
+  border: 1px solid red;
+}
