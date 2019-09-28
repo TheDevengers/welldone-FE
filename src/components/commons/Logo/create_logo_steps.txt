@@ -1,0 +1,8 @@
+Seleccionar el logo de acuerdo al texto introducido y bajar al pc como SVG:
+https://maketext.io
+
+Arrastrar el archivo a esta pagina y darle al icono de copiar:
+https://jakearchibald.github.io/svgomg/
+
+Pegar lo copiado anteriormente en la parte izquierda, a la derecha esta el codigo que tenemos que copiar en el componente de react:
+https://www.smooth-code.com/open-source/svgr/playground/
