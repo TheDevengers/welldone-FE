@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Item from '../Item/Item.js';
+import Nav from '../commons/Nav/Nav';
 import api from '../../utils/api';
 
 const { getArticles, deleteArticle } = api();
@@ -33,6 +34,7 @@ class ListItems extends Component {
 
     return(
       <Fragment>
+        <Nav />
         {
           articles.map((item) => {
             return <Item
