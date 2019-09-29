@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
 import Nav from '../commons/Nav/Nav';
 import api from '../../utils/api';
@@ -35,15 +36,17 @@ class ListItems extends Component {
     return(
       <Fragment>
         <Nav />
-        {
-          articles.map((item) => {
-            return <Item
-              key={item.id}
-              data={item}
-              deleteArticle={this.deleteArticle}
-            />;
-          })
-        }
+        <div className={styles.items_container}>
+          {
+            articles.map((item) => {
+              return <Item
+                key={item.id}
+                data={item}
+                deleteArticle={this.deleteArticle}
+              />;
+            })
+          }
+        </div>
       </Fragment>
     );
   }
