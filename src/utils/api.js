@@ -1,5 +1,7 @@
+import cookieStorage from '../persistence/cookieStorage';
+const { get } = cookieStorage();
+
 const api = () => {
-  // const BASE_URL = 'http://localhost:8000/api/v1/';
   return {
     postUser: (data) => {
       return fetch(`${ process.env.REACT_APP_API }/token/`, {
@@ -10,13 +12,21 @@ const api = () => {
         body: JSON.stringify(data),
       })
       .then((res) => res.json())
-      .catch((error) => console.error('Error:', error));
+      .then((articles) => articles)
+      .catch((error) => console.log('Error:', error));
     },
 
     getArticles: () => {
-      fetch(`${ process.env.REACT_APP_API }/articles`)
+      fetch(`${ process.env.REACT_APP_API }/articles`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        },
+      })
       .then((res) => res.json())
-      // .then((data) => console.log(data))
+      .then((articles) => articles)
       .catch((err) => console.err(err));
     },
 
