@@ -17,7 +17,7 @@ const api = () => {
     },
 
     getArticles: () => {
-      fetch(`${ process.env.REACT_APP_API }/articles`, {
+      return fetch(`${ process.env.REACT_APP_API }/articles`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -31,12 +31,17 @@ const api = () => {
     },
 
     deleteArticle: (id) => {
-      fetch(`${ process.env.REACT_APP_API }/articles/${id}`, {
-        method: 'DELETE'
+      return fetch(`${ process.env.REACT_APP_API }/articles/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        }
       })
       .then((res) => res.json())
       .then((data) => console.log('Article deleted:', data))
-      .catch((err) => console.err(err));
+      .catch((err) => console.log(err));
     }
   };
 };
