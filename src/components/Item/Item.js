@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './item.module.css';
 
 const Item = ({ data, ...props }) => {
@@ -12,7 +13,9 @@ const Item = ({ data, ...props }) => {
           <h1 className={styles.content_title}>{data.title}</h1>
           <div className={styles.icons}>
             <i className="fas fa-trash delete" onClick={() => props.deleteArticle(data.id)}></i>
-            <i className="fas fa-edit edit"></i>
+            <Link to='/edit-article'>
+              <i className="fas fa-edit edit"></i>
+            </Link>
           </div>
         </div>
         <p className={styles.item_description}>{data.introduction}</p>
