@@ -31,6 +31,7 @@
     "no-shadow": [ 1 ],
     "camelcase": [ 1 ],
     "no-underscore-dangle" : [0, "always"],
-    "arrow-parens": 1
+    "arrow-parens": 1,
+    "no-debugger": [ 2 ]
   }
 }
