@@ -8,18 +8,28 @@ const Item = ({ data, ...props }) => {
       <picture>
         <img src={data.image} alt="article" className={styles.image_item} />
       </picture>
-      <div className={styles.content_container}>
-        <div className={styles.nav_content}>
-          <h1 className={styles.content_title}>{data.title}</h1>
-          <div className={styles.icons}>
-            <i className="fas fa-trash delete" onClick={() => props.deleteArticle(data.id)}></i>
-            <Link to='/edit-article'>
-              <i className="fas fa-edit edit"></i>
-            </Link>
+      <div className={styles.resume}>
+        <div className={styles.content_container}>
+          <div className={styles.nav_content}>
+            <h1 className={styles.content_title}>{data.title}</h1>
+            <div className={styles.icons}>
+              <i className="fas fa-trash delete" onClick={() => props.deleteArticle(data.id)}></i>
+              <Link to={`/edit-article/${data.id}`}>
+                <i className="fas fa-edit edit"></i>
+              </Link>
+            </div>
           </div>
+          <p className={styles.item_description}>{data.introduction}</p>
+          <em>{data.publication_date}</em>
         </div>
-        <p className={styles.item_description}>{data.introduction}</p>
-        <em>{data.publication_date}</em>
+        <div className={styles.btn_container}>
+          {data.categories.map((data) =>
+            <div key={data.id}>
+              <button className={styles.button}>
+                {data.name}
+              </button>
+            </div>)}
+        </div>
       </div>
     </div>
   );

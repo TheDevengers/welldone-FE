@@ -26,7 +26,7 @@
 .content_title {
   padding: 0;
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .content_container {
@@ -36,6 +36,7 @@
 
 .item_description {
   font-size: 1rem;
+  margin-top: 15px;
 }
 
 .icons {
@@ -47,12 +48,36 @@
 }
 
 .nav_content {
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.edit .delete {
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn_container {
+  display: flex;
+  align-self: flex-end;
+  padding: 12px 0 12px 8px;
+}
+
+.button {
+  background-color: white;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
   cursor: pointer;
 }
 
@@ -60,7 +85,6 @@
   .item_container {
     margin: 15px 40px;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-start;
     padding: 2px 30px;
   }
@@ -70,6 +94,7 @@
   }
 
   .image_item {
-    padding-top: 48px;
+    padding-top: 30px;
+    margin-bottom: 15px;
   }
 }
