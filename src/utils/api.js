@@ -54,14 +54,8 @@ const api = () => {
         },
         body:JSON.stringify(data)
       })
-      .then((res) => {
-        debugger;
-        return res.json();
-      })
-      .then((response) => {
-        debugger;
-        return response;
-      })
+      .then((res) => res.json())
+      .then((response) => response)
       .catch((err) => console.log(err));
     }
   };
