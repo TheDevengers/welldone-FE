@@ -7,15 +7,14 @@ import styles from './editItemForm.module.css';
 import { Input, Button } from '../commons';
 import Nav from '../commons/Nav/Nav.js';
 
-import api from '../../utils/api';
-
-const { editArticle } = api();
+import { editItem } from '../../persistence/edit';
 
 const EditItemSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
   introduction: Yup.string().required('Introduction is required'),
   state: Yup.string().required('State is required'),
-  body: Yup.string().required('Body is required')
+  body: Yup.string().required('Body is required'),
+  category: Yup.string().required('Category is required!'),
 });
 
 const EditItemForm = () => (
@@ -27,12 +26,16 @@ const EditItemForm = () => (
         title: '',
         introduction: '',
         state: '',
-        body: ''
+        body: '',
+        category: ''
       }}
       validationSchema={EditItemSchema}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        const queryParam = window.location.pathname.slice(14);
+        editItem(queryParam, values);
+      }}
     >
-      {({ handleSubmit, errors, touched, handleChange, values }) => (
+      {({ handleSubmit, errors, touched, handleChange, handleBlur, values }) => (
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.form_group}>
             <label className={styles.form_label} htmlFor="text">Title:</label>
@@ -92,6 +95,24 @@ const EditItemForm = () => (
             />
             {errors.body && touched.body ? (
               <div className={styles.error}>{errors.body}</div>
+            ) : null}
+          </div>
+          <div className={styles.form_group}>
+            <label className={styles.form_label} htmlFor="text">Category:</label>
+            <select
+              name="category"
+              value={values.category}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              style={{ display: 'block' }}
+            >
+              <option value="" label="Select a category" />
+              <option value="1" label="Categoria 1" />
+              <option value="2" label="Categoria 2" />
+              <option value="3" label="Categoria 3" />
+            </select>
+            {errors.category && touched.category ? (
+              <div className={styles.error}>{errors.category}</div>
             ) : null}
           </div>
           <Button className={styles.submit} type="submit">Submit</Button>

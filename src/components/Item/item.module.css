@@ -85,6 +85,7 @@
   .item_container {
     margin: 15px 40px;
     flex-direction: row;
+    min-width: 550px;
     align-items: flex-start;
     padding: 2px 30px;
   }
