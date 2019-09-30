@@ -1,0 +1,5 @@
+FROM node:8
+ENV REACT_APP_API=${REACT_APP_API}
+ENV REACT_APP_USER_ID=${REACT_APP_USER_ID}
+RUN npm install
+RUN npm run build
