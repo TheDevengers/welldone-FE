@@ -17,7 +17,7 @@ const EditItemSchema = Yup.object().shape({
   category: Yup.string().required('Category is required!'),
 });
 
-const EditItemForm = () => (
+const EditItemForm = (props) => (
   <Fragment>
 
     <Nav />
@@ -31,7 +31,7 @@ const EditItemForm = () => (
       }}
       validationSchema={EditItemSchema}
       onSubmit={(values) => {
-        const queryParam = window.location.pathname.slice(14);
+        const queryParam = props.match.params.id;
         editItem(queryParam, values);
       }}
     >
