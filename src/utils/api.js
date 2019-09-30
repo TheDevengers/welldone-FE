@@ -40,7 +40,28 @@ const api = () => {
         }
       })
       .then((res) => res.json())
-      .then((data) => console.log('Article deleted:', data))
+      .then((data) => console.log('Article deleted'))
+      .catch((err) => console.log(err));
+    },
+
+    editArticle: (id, data) => {
+      return fetch(`${ process.env.REACT_APP_API }/articles/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        },
+        body:JSON.stringify(data)
+      })
+      .then((res) => {
+        debugger;
+        return res.json();
+      })
+      .then((response) => {
+        debugger;
+        return response;
+      })
       .catch((err) => console.log(err));
     }
   };
