@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+  padding: 40px 0;
+}
+
+.input {
+  width: 100%;
+}
+
+/* .form_group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 10px;
+} */
+
+.submit {
+  margin-top: 30px;
+}
+
+@media (min-width: 600px) {
+  .form {
+    width: 60%;
+  }
+}
