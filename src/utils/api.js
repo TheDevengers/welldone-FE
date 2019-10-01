@@ -57,6 +57,34 @@ const api = () => {
       .then((res) => res.json())
       .then((response) => response)
       .catch((err) => console.log(err));
+    },
+
+    getCategories: () => {
+      return fetch(`${ process.env.REACT_APP_API }/categories`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        }
+      })
+      .then((res) => res.json())
+      .then((categories) => categories)
+      .catch((err) => console.log(err));
+    },
+
+    getArticle: (id) => {
+      return fetch(`${ process.env.REACT_APP_API }/articles/${id}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        }
+      })
+      .then((res) => res.json())
+      .then((article) => article)
+      .catch((err) => console.log(err));
     }
   };
 };
