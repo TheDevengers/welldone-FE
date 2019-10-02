@@ -23,7 +23,7 @@ const Item = ({ data, ...props }) => {
             </div>
           </div>
           <p className={styles.item_description}>{data.introduction}</p>
-          <em>{data.publication_date}</em>
+          <em>{new Date(data.publication_date).toLocaleDateString()}</em>
         </div>
         <div className={styles.btn_container}>
           {data.categories.map((elem) =>
