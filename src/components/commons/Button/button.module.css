@@ -8,3 +8,7 @@
   border: none;
   text-align: center;
 }
+
+.defaultButton:active {
+  background-color: #298d70;
+}

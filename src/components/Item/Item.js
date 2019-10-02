@@ -17,7 +17,7 @@ const Item = ({ data, ...props }) => {
             <h1 className={styles.content_title}>{data.title}</h1>
             <div className={styles.icons}>
               <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)}/>
-              <Link to={`/edit-article/${data.id}`}>
+              <Link className={styles.link} to={`/edit-article/${data.id}`}>
                 <MdModeEdit size={SIZE} />
               </Link>
             </div>
