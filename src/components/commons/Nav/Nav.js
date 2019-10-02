@@ -6,11 +6,11 @@ import styles from './nav.module.css';
 import { LogoSimple } from '../Logo/LogoSimple';
 import { MdAccountCircle, MdExitToApp } from 'react-icons/md';
 
-const SIZE = '48px';
+const SIZE = '38px';
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark">
+    <nav className="navbar navbar-expand navbar-dark bg-dark" style={{ height: '68px' }}>
       <a className="navbar-brand" href="/"><LogoSimple /></a>
 
       <ul className="navbar-nav ml-auto">
@@ -24,7 +24,7 @@ const Nav = () => {
 
     </nav>
   );
-    
+
 };
 
 export default Nav;
