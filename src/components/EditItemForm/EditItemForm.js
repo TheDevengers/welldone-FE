@@ -10,10 +10,13 @@ import { Input, Button } from '../commons';
 import { editItem } from '../../persistence/edit';
 
 const EditItemSchema = Yup.object().shape({
-  title: Yup.string().required('Title is required'),
-  introduction: Yup.string().required('Introduction is required'),
+  title: Yup.string().required('Title is required').min(4, 'Title must be between 4 and 150 characters')
+    .max(150, 'Title must be between 4 and 150 characters'),
+  introduction: Yup.string().required('Introduction is required').min(4, 'Title must be between 4 and 150 characters')
+    .max(250, 'Title must be between 4 and 150 characters'),
   state: Yup.string().required('State is required'),
-  body: Yup.string().required('Body is required'),
+  body: Yup.string().required('Body is required').min(4, 'Title must be between 4 and 150 characters')
+    .max(2000, 'Title must be between 4 and 150 characters'),
   categories: Yup.string().required('Category is required!'),
 });
 
@@ -29,7 +32,6 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
     }}
     validationSchema={EditItemSchema}
     onSubmit={(values) => {
-      console.log(JSON.stringify(values));
       const queryParam = dataArticle.id;
       editItem(queryParam, values);
     }}
