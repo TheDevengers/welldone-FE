@@ -5,6 +5,7 @@ import styles from './nav.module.css';
 
 import { LogoSimple } from '../Logo/LogoSimple';
 import { MdAccountCircle, MdExitToApp } from 'react-icons/md';
+import { TiDocumentAdd } from "react-icons/ti";
 
 const SIZE = '38px';
 
@@ -16,6 +17,9 @@ const Nav = () => {
       <ul className="navbar-nav ml-auto">
         <li>
           <a className="nav-link" href="/login" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
+        </li>
+        <li>
+          <a className="nav-link" alt="movie" href="/create-article" style={{ color: 'green' }}><TiDocumentAdd size={SIZE} /></a>
         </li>
         <li>
           <a className="nav-link" onClick={logout} style={{ color: 'green' }}><MdExitToApp size={SIZE} /></a>
