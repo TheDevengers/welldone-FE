@@ -3,6 +3,7 @@
   justify-items: center;
   grid-template-columns: 1fr;
   height: 100%;;
+  padding-bottom: 75px;
 }
 
 .icon_container {
