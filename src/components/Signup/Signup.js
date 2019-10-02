@@ -46,21 +46,21 @@ class Signup extends Component {
       this.setState({
         error: result.error,
         dataError: result
-      })
+      });
 
       if (result && !result.error) {
         // redigir a login
-        this.props.history.push('/')
+        this.props.history.push('/');
       }
   }
 
   render() {
-    const { error, dataError } = this.state
+    const { error, dataError } = this.state;
 
     return (
       <div>
         <LogoSimple />
-        
+
         <Formik
           initialValues={ {
             username: '',

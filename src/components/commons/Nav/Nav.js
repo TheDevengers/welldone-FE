@@ -1,4 +1,6 @@
 import React from 'react';
+import { logout } from '../../../persistence/access';
+
 import styles from './nav.module.css';
 
 import { LogoSimple } from '../Logo/LogoSimple';
@@ -16,7 +18,7 @@ const Nav = () => {
           <a className="nav-link" href="/login" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
         </li>
         <li>
-          <a className="nav-link" href="/logout" style={{ color: 'green' }}><MdExitToApp size={SIZE} /></a>
+          <a className="nav-link" onClick={logout} style={{ color: 'green' }}><MdExitToApp size={SIZE} /></a>
         </li>
       </ul>
 
