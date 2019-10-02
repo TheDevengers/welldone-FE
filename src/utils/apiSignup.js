@@ -9,19 +9,19 @@ export const doSignup = async (values) => {
   });
 
   const data = await result.json();
-  
+
   if (result && result.status === 400 ) {
     return {
       ...data,
       error: true
-    }
-  } 
-  
+    };
+  }
+
   if (result && result.status === 201 ) {
     return {
       ...data,
       error: false
-    }
+    };
   }
 
 };
