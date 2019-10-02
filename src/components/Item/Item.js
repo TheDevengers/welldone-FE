@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './item.module.css';
+import { MdDelete, MdModeEdit } from 'react-icons/md';
+
+const SIZE = '25px';
 
 const Item = ({ data, ...props }) => {
   return(
@@ -13,9 +16,9 @@ const Item = ({ data, ...props }) => {
           <div className={styles.nav_content}>
             <h1 className={styles.content_title}>{data.title}</h1>
             <div className={styles.icons}>
-              <i className="fas fa-trash delete" onClick={() => props.deleteArticle(data.id)}></i>
+              <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)}/>
               <Link to={`/edit-article/${data.id}`}>
-                <i className="fas fa-edit edit"></i>
+                <MdModeEdit size={SIZE} />
               </Link>
             </div>
           </div>
