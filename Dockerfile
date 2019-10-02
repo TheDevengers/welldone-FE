@@ -2,7 +2,7 @@ FROM node:8
 RUN mkdir /react-project
 COPY . /react-project/
 WORKDIR /react-project
-RUN /bin/bash -c 'source /.env'
+RUN /bin/bash -c 'source .env'
 ENV NODE_ENV=production
 RUN npm install
 RUN npm run build
