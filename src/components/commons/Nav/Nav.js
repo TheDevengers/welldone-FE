@@ -5,7 +5,7 @@ import styles from './nav.module.css';
 
 import { LogoSimple } from '../Logo/LogoSimple';
 import { MdAccountCircle, MdExitToApp } from 'react-icons/md';
-import { TiDocumentAdd } from "react-icons/ti";
+import { TiDocumentAdd } from 'react-icons/ti';
 
 const SIZE = '38px';
 

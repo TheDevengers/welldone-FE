@@ -26,10 +26,10 @@ const Item = ({ data, ...props }) => {
           <em>{data.publication_date}</em>
         </div>
         <div className={styles.btn_container}>
-          {data.categories.map((data) =>
-            <div key={data.id}>
+          {data.categories.map((elem) =>
+            <div key={elem.id}>
               <button className={styles.button}>
-                {data.name}
+                {elem.name}
               </button>
             </div>)}
         </div>
