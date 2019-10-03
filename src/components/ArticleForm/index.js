@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { createArticle, retrieveCategories } from '../../utils/apiArticle.js';
-import { Input, Button, ModalBox } from '../commons';
+import { Input, Button, ModalBox, Nav } from '../commons';
 import styles from './articleForm.module.css';
 
 class ArticleForm extends React.Component{
@@ -49,7 +49,7 @@ class ArticleForm extends React.Component{
         });
     }
 
-    onSendArticle = async(e, articleState) =>{
+    onSendArticle = async(e, articleState) => {
       e.preventDefault();
       const result = await createArticle(Object.assign({}, this.state, { state: articleState }));
 
@@ -63,10 +63,13 @@ class ArticleForm extends React.Component{
     };
 
     render(){
-        const { title, intro, image, categories, error } = this.state;
-        const ARTICLE_STATE = [ 'PB', 'DR' ];
+      const { title, intro, image, categories, error } = this.state;
+      const ARTICLE_STATE = [ 'PB', 'DR' ];
 
-        return (
+      return (
+        <Fragment>
+
+          <Nav />
           <div className={styles.article_form_container}>
             {error ? (
               <ModalBox message="There is a problem to create a new article. Try again!" open={error} onClose={this.onHandleCloseModal}></ModalBox>
@@ -96,7 +99,7 @@ class ArticleForm extends React.Component{
                             <span>{ category.name }</span>
                           </span>
                         );
-                    }) 
+                    })
                 }
                 </div>
                 <div className={styles.form__buttonGroup}>
@@ -106,7 +109,8 @@ class ArticleForm extends React.Component{
               </div>
             </form>
           </div>
-        );
+        </Fragment>
+      );
     }
 }
 

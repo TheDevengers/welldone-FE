@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import styles from './login.module.css';
@@ -62,6 +63,12 @@ const Login = () => (
         </form>
       )}
     </Formik>
+    <div className={styles.signup_container}>
+      <p className={styles.signup_text}>Don't have an account yet?</p>
+      <Link className={styles.link} to="/signup">
+        <Button type="submit">Signup</Button>
+      </Link>
+    </div>
   </div>
 );
 
