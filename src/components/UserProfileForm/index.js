@@ -14,22 +14,25 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       userProfileInfo: {},
+      profileInfo: {}
     };
   }
 
   componentDidMount() {
-    this.setState({ id: get('id') });
     getUserInfo(get('id'))
-    .then((userInfo) => this.setState({ userProfileInfo: userInfo }));
+    .then((userInfo) => this.setState({ userProfileInfo: userInfo, profileInfo: userInfo.profile }));
   }
 
   render() {
     const { userProfileInfo } = this.state;
+    const { profileInfo } = this.state;
+    
     return(
       <Fragment>
         <Nav />
         <UserProfileForm
           dataUserProfile={userProfileInfo}
+          profileInfo = { profileInfo }
         />
       </Fragment>
     );

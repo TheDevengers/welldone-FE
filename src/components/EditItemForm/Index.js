@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Nav from '../commons/Nav/Nav.js';
 import EditItemForm from './EditItemForm.js';
 import api from '../../utils/api';
-import { get } from 'http';
 
 const { getArticle, getCategories } = api();
 

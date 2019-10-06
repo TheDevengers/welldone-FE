@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
 
 import { Button, DatePicker } from '../commons';
-//import styles from './signup.module.css';
+import { editUserProfile } from '../../persistence/profile';
+import cookieStorage from '../../persistence/cookieStorage';
+
+const { get } = cookieStorage();
 
 const UserProfileSchema = Yup.object().shape({
     username: Yup.string()
@@ -29,7 +32,7 @@ const UserProfileSchema = Yup.object().shape({
         .max(150, 'Must be between 4 and 80 characters'),
 });
 
-const UserProfileForm = ({ dataUserProfile }) => (
+const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
   <Formik
     enableReinitialize={true}
           initialValues={ {
@@ -37,17 +40,36 @@ const UserProfileForm = ({ dataUserProfile }) => (
             last_name: dataUserProfile.last_name,
             username: dataUserProfile.username,
             email: dataUserProfile.email,
-            description: dataUserProfile.description || '',
-            birth_date: dataUserProfile.birth_date || '',
-            birth_place: dataUserProfile.birth_place || ''
+            profile: {
+              description: profileInfo.description || '',
+              birth_date: profileInfo.birth_date || '',
+              birth_place: profileInfo.birth_place || ''
+            },
           } }
 
           validationSchema={ UserProfileSchema }
 
-          onSubmit = { (values) => this.handleOnSumbit(values) }
+          onSubmit = { (values) => {
+            
+            console.log('On submit');
+            console.log(values);
+            if (!values.profile.description){
+              console.log('descripcion vacia');
+            }
+            if (!values.profile.birth_place){
+              console.log('LUGAR vacia');
+              values.profile.birth_place = null;
+            }
+            if (!values.profile.birth_date){
+              console.log('FECHA vacia');
+              values.profile.birth_date = null;
+            }
+            
+            editUserProfile(get('id'), values);
+          }}
         >
 
-    {({ errors, touched, handleReset, values, setFieldValue }) => (
+    {({ errors, touched, values, setFieldValue, handleBlur }) => (
       <Form noValidate>
         <div className="form-group">
           <label htmlFor="first_name">First Name:</label>
@@ -58,14 +80,14 @@ const UserProfileForm = ({ dataUserProfile }) => (
 
         <div className="form-group">
           <label htmlFor="last_name">Last Name:</label>
-          <Field name="last_name" type="text" value={values.last_name}
+          <Field name="last_name" type="text" value={values.last_name} onBlur={handleBlur}
           className={ 'form-control' + (errors.last_name && touched.last_name ? ' is-invalid' : '') } />
           <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
         </div>
 
         <div className="form-group">
           <label htmlFor="username">Username:</label>
-          <Field name="username" type="text" value={values.username}
+          <Field name="username" type="text" value={values.username} onBlur={handleBlur}
           className={ 'form-control' + (errors.username && touched.username ? ' is-invalid' : '') } />
           <ErrorMessage name="username" component="div" className="invalid-feedback" />
         </div>
@@ -76,16 +98,29 @@ const UserProfileForm = ({ dataUserProfile }) => (
           className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '') } />
           <ErrorMessage name="email" component="div" className="invalid-feedback" />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="profile.description">Description:</label>
+          <Field name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
+          className={ 'form-control' + (errors.description && touched.description ? ' is-invalid' : '') } />
+          <ErrorMessage name="profile.description" component="div" className="invalid-feedback" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="profile.birth_place">Birth place:</label>
+          <Field name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
+          className={ 'form-control' + (errors.birth_place && touched.birth_place ? ' is-invalid' : '') } />
+          <ErrorMessage name="profile.birth_place" component="div" className="invalid-feedback" />
+        </div>
    
         <div className="form-group">
-          <label >Date of Birth</label>
-          <DatePicker />
+          <label htmlFor="profile.birthdate">Birth Date</label>
+          <DatePicker name="profile.birth_date" value={ values.profile.birth_date } onChange={ setFieldValue } className={ 'form-control' + (errors.birth_date && touched.birth_date ? ' is-invalid' : '') } />
+          <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
         </div>
 
         <Button type="submit">Submit</Button>
-        <button type="button" className="outline" onClick={ handleReset } >
-                Reset
-        </button>
+
       </Form>
           )}
   </Formik>

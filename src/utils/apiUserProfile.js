@@ -18,6 +18,21 @@ const apiUserProfile = () => {
         .catch((err) => console.log(err));
       },
 
+      editUserInfo: (id, data) => {
+        return fetch(`${ process.env.REACT_APP_API }/users/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${get('accessKey')}`
+          },
+          body:JSON.stringify(data)
+        })
+        .then((res) => res.json())
+        .then((response) => response)
+        .catch((err) => console.log(err));
+      },
+
   };
 };
 
