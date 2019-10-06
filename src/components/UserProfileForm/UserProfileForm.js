@@ -51,12 +51,7 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
 
           onSubmit = { (values) => {
             
-            console.log('On submit');
-            console.log(values);
-            console.log(values.profile.birth_date);
-            values.profile.birth_date = `${values.profile.birth_date.getFullYear()}-${values.profile.birth_date.getMonth()}-${values.profile.birth_date.getDate()}`;
-            console.log('Cambios en fecha');
-            console.log(values.profile.birth_date);
+            values.profile.birth_date = `${values.profile.birth_date.getFullYear()}-${values.profile.birth_date.getMonth()+1}-${values.profile.birth_date.getDate()}`;
             if (!values.profile.description){
               values.profile.description = null;
             }
