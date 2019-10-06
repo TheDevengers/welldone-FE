@@ -26,7 +26,7 @@ class EditItem extends Component {
 
   // eslint-disable-next-line class-methods-use-this
   _formatCategories(arr) {
-    if (arr !== undefined) {
+    if (arr) {
       return arr.map((data) => Object.assign({
         id: data.id,
         value: data.id,
