@@ -53,15 +53,17 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
             
             console.log('On submit');
             console.log(values);
+            console.log(values.profile.birth_date);
+            values.profile.birth_date = `${values.profile.birth_date.getFullYear()}-${values.profile.birth_date.getMonth()}-${values.profile.birth_date.getDate()}`;
+            console.log('Cambios en fecha');
+            console.log(values.profile.birth_date);
             if (!values.profile.description){
-              console.log('descripcion vacia');
+              values.profile.description = null;
             }
             if (!values.profile.birth_place){
-              console.log('LUGAR vacia');
               values.profile.birth_place = null;
             }
             if (!values.profile.birth_date){
-              console.log('FECHA vacia');
               values.profile.birth_date = null;
             }
             

@@ -33,6 +33,20 @@ const apiUserProfile = () => {
         .catch((err) => console.log(err));
       },
 
+      deleteUser: (id) => {
+        return fetch(`${ process.env.REACT_APP_API }/users/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${get('accessKey')}`
+          }
+        })
+        .then((res) => res.json())
+        .then((data) => console.log('User deleted'))
+        .catch((err) => console.log(err));
+      },
+
   };
 };
 
