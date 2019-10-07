@@ -1,0 +1,21 @@
+.form_group {
+    width: 60%;
+    margin: auto;
+    margin-top: 1.5em;
+}
+
+.button_group{
+    width:100%;
+    text-align:center;
+    align-content: space-between
+}
+
+.submit {
+    width: 50%;
+    margin: auto;
+    margin-top: 4em;
+    margin-bottom: 5em;
+    margin-right: 5em;
+    display:inline-block;
+  }
+

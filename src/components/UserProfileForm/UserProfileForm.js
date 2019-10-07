@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Formik, Field, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
+import { MdDeleteForever } from 'react-icons/md';
 
-import { Button, DatePicker } from '../commons';
+import styles from './userProfileForm.module.css';
+
+import { Button, ButtonDelete, DatePicker } from '../commons';
 import { editUserProfile } from '../../persistence/profile';
 import cookieStorage from '../../persistence/cookieStorage';
 
 const { get } = cookieStorage();
+
+const SIZE = '20px';
 
 const UserProfileSchema = Yup.object().shape({
     username: Yup.string()
@@ -33,7 +38,8 @@ const UserProfileSchema = Yup.object().shape({
 });
 
 const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
-  <Formik
+  <Fragment>
+    <Formik
     enableReinitialize={true}
           initialValues={ {
             first_name: dataUserProfile.first_name,
@@ -66,61 +72,64 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
           }}
         >
 
-    {({ errors, touched, values, setFieldValue, handleBlur }) => (
-      <Form noValidate>
-        <div className="form-group">
-          <label htmlFor="first_name">First Name:</label>
-          <Field name="first_name" type="text" value={values.first_name}
+      {({ errors, touched, values, setFieldValue, handleBlur }) => (
+        <Form noValidate>
+          <div className={styles.form_group}>
+            <label htmlFor="first_name">First Name:</label>
+            <Field name="first_name" type="text" value={values.first_name}
           className={ 'form-control' + (errors.first_name && touched.first_name ? ' is-invalid' : '') } />
-          <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="last_name">Last Name:</label>
-          <Field name="last_name" type="text" value={values.last_name} onBlur={handleBlur}
+          <div className={styles.form_group}>
+            <label htmlFor="last_name">Last Name:</label>
+            <Field name="last_name" type="text" value={values.last_name} onBlur={handleBlur}
           className={ 'form-control' + (errors.last_name && touched.last_name ? ' is-invalid' : '') } />
-          <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <Field name="username" type="text" value={values.username} onBlur={handleBlur}
+          <div className={styles.form_group}>
+            <label htmlFor="username">Username:</label>
+            <Field name="username" type="text" value={values.username} onBlur={handleBlur}
           className={ 'form-control' + (errors.username && touched.username ? ' is-invalid' : '') } />
-          <ErrorMessage name="username" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="username" component="div" className="invalid-feedback" />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <Field name="email" type="text" value={values.email}
+          <div className={styles.form_group}>
+            <label htmlFor="email">Email:</label>
+            <Field name="email" type="text" value={values.email}
           className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '') } />
-          <ErrorMessage name="email" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="profile.description">Description:</label>
-          <Field name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
+          <div className={styles.form_group}>
+            <label htmlFor="profile.description">Description:</label>
+            <Field name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
           className={ 'form-control' + (errors.description && touched.description ? ' is-invalid' : '') } />
-          <ErrorMessage name="profile.description" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="profile.description" component="div" className="invalid-feedback" />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="profile.birth_place">Birth place:</label>
-          <Field name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
+          <div className={styles.form_group}>
+            <label htmlFor="profile.birth_place">Birth place:</label>
+            <Field name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
           className={ 'form-control' + (errors.birth_place && touched.birth_place ? ' is-invalid' : '') } />
-          <ErrorMessage name="profile.birth_place" component="div" className="invalid-feedback" />
-        </div>
+            <ErrorMessage name="profile.birth_place" component="div" className="invalid-feedback" />
+          </div>
    
-        <div className="form-group">
-          <label htmlFor="profile.birthdate">Birth Date</label>
-          <DatePicker name="profile.birth_date" value={ values.profile.birth_date } onChange={ setFieldValue } className={ 'form-control' + (errors.birth_date && touched.birth_date ? ' is-invalid' : '') } />
-          <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
-        </div>
+          <div className={styles.form_group}>
+            <label htmlFor="profile.birthdate">Birth Date</label>
+            <DatePicker name="profile.birth_date" value={ values.profile.birth_date } onChange={ setFieldValue } className={ 'form-control' + (errors.birth_date && touched.birth_date ? ' is-invalid' : '') } />
+            <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
+          </div>
 
-        <Button type="submit">Submit</Button>
+          <Button type="submit" className={styles.submit}>Submit</Button>
 
-      </Form>
+        </Form>
           )}
-  </Formik>
+    </Formik>
+    <ButtonDelete className={styles.delete}><MdDeleteForever size={SIZE}/>Delete account</ButtonDelete>
+
+  </Fragment>
       
     );
 
