@@ -9,6 +9,10 @@ import { Input, Button } from '../commons';
 
 import { editItem } from '../../persistence/edit';
 
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+const animatedComponents = makeAnimated();
+
 const EditItemSchema = Yup.object().shape({
   title: Yup.string().required('Title is required').min(4, 'Title must be between 4 and 150 characters')
     .max(150, 'Title must be between 4 and 150 characters'),
@@ -17,7 +21,7 @@ const EditItemSchema = Yup.object().shape({
   state: Yup.string().required('State is required'),
   body: Yup.string().required('Body is required').min(4, 'Title must be between 4 and 150 characters')
     .max(2000, 'Title must be between 4 and 150 characters'),
-  categories: Yup.string().required('Category is required!'),
+  categories: Yup.array(),
 });
 
 const EditItemForm = ({ dataArticle, dataCategories }) => (
@@ -100,24 +104,22 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
           ) : null}
         </div>
         <div className={styles.form_group}>
-          <label className={styles.form_label}>categories:</label>
-          <select
-            name="categories"
-            value={values.categories}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            style={{ display: 'block' }}
-          >
-            {dataCategories.map((data) => {
-              const id = data.id;
-              return <option key={data.id} value={id} label={data.name} />;
-            })}
-          </select>
-          {errors.categories && touched.categories ? (
+          <label className={styles.form_label}>Categories:</label>
+          <Select
+            closeMenuOnSelect={false}
+            components={animatedComponents}
+            onChange={(elements) => {
+              values.categories = elements.map((elem) => { return { id: elem.id }; });
+              return values.categories;
+            }}
+            isMulti
+            options={dataCategories}
+          />
+          {errors.categories ? (
             <div className={styles.error}>{errors.categories}</div>
           ) : null}
         </div>
-        <Button className={styles.submit} type="submit">Submit</Button>
+        <Button className={styles.submit} type="submit">Edit</Button>
       </form>
     )}
   </Formik>
