@@ -5,11 +5,14 @@ import { MdDeleteForever } from 'react-icons/md';
 
 import styles from './userProfileForm.module.css';
 
-import { Button, ButtonDelete, DatePicker } from '../commons';
-import { editUserProfile } from '../../persistence/profile';
+import { Button, ButtonDelete, DatePicker, ConfirmDialog } from '../commons';
+import '@reach/dialog/styles.css';
+import { editUserProfile, deleteUserProfile } from '../../persistence/profile';
 import cookieStorage from '../../persistence/cookieStorage';
 
 const { get } = cookieStorage();
+
+const handleDelete = () => deleteUserProfile(get('id'));
 
 const SIZE = '20px';
 
@@ -127,7 +130,15 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
         </Form>
           )}
     </Formik>
-    <ButtonDelete className={styles.delete}><MdDeleteForever size={SIZE}/>Delete account</ButtonDelete>
+
+    <ConfirmDialog title="Delete User" description="The user will be permanently deleted, are you sure you want to delete it?">
+      {(confirm) => (
+        <ButtonDelete className={styles.delete} onClick={confirm(handleDelete)}>
+          <MdDeleteForever size={SIZE}/>Delete account
+        </ButtonDelete>
+                
+          )}
+    </ConfirmDialog>
 
   </Fragment>
       

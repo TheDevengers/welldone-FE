@@ -1,0 +1,11 @@
+.cancel_button {
+  background: grey;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.confirm_button {
+  background: red;
+  border-radius: 3px;
+  color: #fff;
+}
