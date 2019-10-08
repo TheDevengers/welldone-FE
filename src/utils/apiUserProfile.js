@@ -18,8 +18,8 @@ const apiUserProfile = () => {
         .catch((err) => console.log(err));
       },
 
-      editUserInfo: (id, data) => {
-        return fetch(`${ process.env.REACT_APP_API }/users/${id}`, {
+      editUserInfo: async (id, data) => {
+        const result = await fetch(`${ process.env.REACT_APP_API }/users/${id}`, {
           method: 'PUT',
           headers: {
             'Accept': 'application/json',
@@ -27,10 +27,23 @@ const apiUserProfile = () => {
             'Authorization': `Bearer ${get('accessKey')}`
           },
           body:JSON.stringify(data)
-        })
-        .then((res) => res.json())
-        .then((response) => response)
-        .catch((err) => console.log(err));
+        });
+        const response = await result.json();
+
+        if (result && result.status === 400 ) {
+          return {
+            ...response,
+            error: true
+          };
+        }
+      
+        if (result && result.status === 200 ) {
+          return {
+            ...response,
+            error: false
+          };
+        }
+      
       },
 
       deleteUser: (id) => {
