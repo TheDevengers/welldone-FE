@@ -4,8 +4,9 @@ const { editUserInfo, deleteUser } = api();
 
 export const editUserProfile = (id, values) => {
   return editUserInfo(id, values)
-  .then(() => {
-      console.log('Hecho correctamente');
+  .then((errores) => {
+      console.log('Peticion lanzada');
+      console.log(errores);
     //window.location.href = '/';
   })
   .catch(() => new Error());

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
 import { MdDeleteForever } from 'react-icons/md';
@@ -40,7 +40,11 @@ const UserProfileSchema = Yup.object().shape({
         .max(150, 'Must be between 4 and 80 characters'),
 });
 
-const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
+const UserProfileForm = ({ dataUserProfile, profileInfo }) => {
+
+  const [ error, setError ] = useState(false);
+  const [ dataError, setDataError ] = useState({});
+return(
   <Fragment>
     <Formik
     enableReinitialize={true}
@@ -60,7 +64,11 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
 
           onSubmit = { (values) => {
             
-            values.profile.birth_date = `${values.profile.birth_date.getFullYear()}-${values.profile.birth_date.getMonth()+1}-${values.profile.birth_date.getDate()}`;
+            console.log(values);
+
+            if (!values.profile.birth_date.length){
+              values.profile.birth_date = `${values.profile.birth_date.getFullYear()}-${values.profile.birth_date.getMonth()+1}-${values.profile.birth_date.getDate()}`;
+            }
             if (!values.profile.description){
               values.profile.description = null;
             }
@@ -70,8 +78,14 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
             if (!values.profile.birth_date){
               values.profile.birth_date = null;
             }
-            
+            /*
+            setError(true);
+            console.log(error);
+            setDataError({ malacaton: 'del bueno' });
+            console.log(dataError);
+            */
             editUserProfile(get('id'), values);
+            
           }}
         >
 
@@ -142,6 +156,6 @@ const UserProfileForm = ({ dataUserProfile, profileInfo }) => (
 
   </Fragment>
       
-    );
+      );};
 
 export default UserProfileForm;
