@@ -18,7 +18,7 @@ const App = () => (
       <PrivateRoute path="/" redirectRoute="/login" exact component={ListItems}/>
       <PrivateRoute path="/create-article" exact component={ArticleForm} />
       <PrivateRoute path="/edit-article/:id" exact component={EditItem} />
-      <PrivateRoute path="/user-profile" exact component={UserProfile} />
+      <PrivateRoute path="/edit-profile" exact component={UserProfile} />
     </Switch>
     <Footer />
   </Router>

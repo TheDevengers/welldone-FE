@@ -2,7 +2,7 @@ import api from '../utils/api';
 import cookieStorage from './cookieStorage';
 
 const { postUser } = api();
-const { set } = cookieStorage();
+const { set, remove } = cookieStorage();
 
 export const doLogin =  (values) =>
   postUser(values)
@@ -15,6 +15,9 @@ export const doLogin =  (values) =>
   .catch(() => new Error());
 
 export const logout = () => {
-  set('accessKey', null);
+  remove('accessKey');
+  remove('username');
+  remove('id');
+
   window.location.href = '/Login'; // cambiará a futuro
 };
