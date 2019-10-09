@@ -17,19 +17,19 @@ const Item = ({ data, ...props }) => {
             <h1 className={styles.content_title}>{data.title}</h1>
             <div className={styles.icons}>
               <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)}/>
-              <Link to={`/edit-article/${data.id}`}>
+              <Link className={styles.link} to={`/edit-article/${data.id}`}>
                 <MdModeEdit size={SIZE} />
               </Link>
             </div>
           </div>
           <p className={styles.item_description}>{data.introduction}</p>
-          <em>{data.publication_date}</em>
+          <em>{new Date(data.publication_date).toLocaleDateString()}</em>
         </div>
         <div className={styles.btn_container}>
-          {data.categories.map((data) =>
-            <div key={data.id}>
+          {data.categories.map((elem) =>
+            <div key={elem.id}>
               <button className={styles.button}>
-                {data.name}
+                {elem.name}
               </button>
             </div>)}
         </div>

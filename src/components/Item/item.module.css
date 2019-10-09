@@ -16,6 +16,9 @@
   background-color: white;
   height: 330px;
   width: 330px;
+  -webkit-box-shadow: -2px 2px 9px -2px rgba(0,0,0,0.98);
+  box-shadow: -2px 2px 9px -2px rgba(0,0,0,0.98);
+  border-radius: 8px;
 }
 
 .image_item:hover {
@@ -80,6 +83,10 @@
   cursor: pointer;
 }
 
+.link {
+  color: unset;
+}
+
 @media (min-width: 600px) {
   .item_container {
     margin: 15px 40px;
@@ -94,7 +101,6 @@
   }
 
   .image_item {
-    padding-top: 30px;
-    margin-bottom: 15px;
+    margin: 10px 0;
   }
 }

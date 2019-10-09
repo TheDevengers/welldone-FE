@@ -8,9 +8,14 @@ const cookieStorage = () => {
     return Cookies.get(key);
   };
 
+  const remove = (key) => {
+    return Cookies.remove(key);
+  };
+
   return {
     set,
-    get
+    get,
+    remove
   };
 };
 

@@ -8,3 +8,13 @@
   border: none;
   text-align: center;
 }
+
+.defaultButton:hover {
+  background-color: #298d50;
+  color: wheat;
+}
+
+.defaultButton:active {
+  background-color: #298d70;
+}
+

@@ -2,6 +2,8 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
+  padding-bottom: 70px;
+  padding-top: 15px;
 }
 
 .form {
