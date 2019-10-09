@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '../commons';
-//import styles from './signup.module.css';
+import styles from './signup.module.css';
 import { doSignup } from '../../utils/apiSignup';
 import { LogoSimple } from '../commons/Logo/LogoSimple';
 
@@ -79,19 +79,19 @@ class Signup extends Component {
 
           {({ errors, touched, handleReset, values, setFieldValue }) => (
             <Form noValidate>
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="first_name">First Name:</label>
                 <Field name="first_name" type="text" className={ 'form-control' + (errors.first_name && touched.first_name ? ' is-invalid' : '') } />
                 <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
               </div>
 
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="last_name">Last Name:</label>
                 <Field name="last_name" type="text" className={ 'form-control' + (errors.last_name && touched.last_name ? ' is-invalid' : '') } />
                 <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
               </div>
 
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="username">Username:</label>
                 <Field name="username" type="text" className={ 'form-control' + (errors.username && touched.username ? ' is-invalid' : '') } />
                 <ErrorMessage name="username" component="div" className="invalid-feedback" />
@@ -100,7 +100,7 @@ class Signup extends Component {
                 }
               </div>
 
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="email">Email:</label>
                 <Field name="email" type="text" className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '') } />
                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
@@ -109,22 +109,22 @@ class Signup extends Component {
                 }
               </div>
 
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="password">Password</label>
                 <Field name="password" type="password" className={ 'form-control' + (errors.password && touched.password ? ' is-invalid' : '') } />
                 <ErrorMessage name="password" component="div" className="invalid-feedback" />
               </div>
                 
-              <div className="form-group">
+              <div className={styles.form_group}>
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <Field name="confirmPassword" type="password" className={ 'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '') } />
                 <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
               </div>
 
-              <Button type="submit">Submit</Button>
-              <button type="button" className="outline" onClick={ handleReset } >
-                Reset
-              </button>
+              <div className={styles.button_group}>
+                <Button type="submit" className={styles.submit}>Submit</Button>
+                <button type="button" className={styles.reset} onClick={ handleReset } >Reset</button>
+              </div>
             </Form>
           )}
         </Formik>
