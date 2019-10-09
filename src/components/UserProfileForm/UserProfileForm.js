@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Formik, Field, Form, ErrorMessage  } from 'formik';
+import { Formik, Field, Form, ErrorMessage, getIn  } from 'formik';
 import * as Yup from 'yup';
 import { MdDeleteForever } from 'react-icons/md';
 
@@ -33,18 +33,16 @@ const UserProfileSchema = Yup.object().shape({
         .min(4, 'Must be between 4 and 150 characters')
         .max(150, 'Must be between 4 and 150 characters'),
 
-    description: Yup.string()
-        .min(4, 'Must be between 4 and 150 characters')
-        .max(150, 'Must be between 4 and 150 characters'),
-    birth_date:Yup.string()
-        .min(2, 'Must be 10 characters')
-        .max(10, 'Must be 10 characters'),
-    birth_place: Yup.string()
-        .min(4, 'Must be between 4 and 70 characters')
-        .max(70, 'Must be between 4 and 70 characters'),
-    image_user: Yup.string()
-        .min(4, 'Must be between 4 and 300 characters')
-        .max(300, 'Must be between 4 and 300 characters'),
+    profile: Yup.object().shape({
+      description: Yup.string()
+          .max(150, 'Maximum of 150 characters'),
+      birth_date:Yup.string()
+          .min(10, 'Must be 10 characters'),
+      birth_place: Yup.string()
+          .max(70, 'Maximum of 70 characters'),
+      image_user: Yup.string()
+          .max(300, 'Maximum of 300 characters'),
+    })
 });
 
 const UserProfileForm = ({ dataUserProfile, profileInfo }) => {
@@ -147,29 +145,30 @@ return(
         </div>
 
         <div className={styles.form_group}>
-          <label htmlFor="profile.image_user">Profile Picture:</label>
+          <label htmlFor="profile.image_user">Profile Picture:</label> 
           <Field name="profile.image_user" type="text" value={values.profile.image_user} onBlur={handleBlur}
-          className={ 'form-control' + (errors.image_user && touched.image_user ? ' is-invalid' : '') } />
-          <ErrorMessage name="profile.image_user" component="div" className="invalid-feedback" />            
+          className={ 'form-control' + (getIn(errors, 'profile.image_user') && getIn(touched, 'profile.image_user') ? ' is-invalid' : '') } />
+          <ErrorMessage name="profile.image_user" component="div"  className="invalid-feedback" />            
         </div>
 
         <div className={styles.form_group}>
           <label htmlFor="profile.description">Description:</label>
           <Field name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
-          className={ 'form-control' + (errors.description && touched.description ? ' is-invalid' : '') } />
-          <ErrorMessage name="description" component="div" className="invalid-feedback" />            
+          className={ 'form-control' + (getIn(errors, 'profile.description') && getIn(touched, 'profile.description') ? ' is-invalid' : '') } />
+          <ErrorMessage name="profile.description" component="div" className="invalid-feedback" />            
         </div>
 
         <div className={styles.form_group}>
           <label htmlFor="profile.birth_place">Birth place:</label>
           <Field name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
-          className={ 'form-control' + (errors.birth_place && touched.birth_place ? ' is-invalid' : '') } />
+          className={ 'form-control' + (getIn(errors, 'profile.birth_place') && getIn(touched, 'profile.birth_place') ? ' is-invalid' : '') } />
           <ErrorMessage name="profile.birth_place" component="div" className="invalid-feedback" />            
         </div>
    
         <div className={styles.form_group}>
           <label htmlFor="profile.birthdate">Birth Date:</label>           
-          <DatePicker name="profile.birth_date" value={ values.profile.birth_date } onChange={ setFieldValue } className={ 'form-control' + (errors.birth_date && touched.birth_date ? ' is-invalid' : '') } />
+          <DatePicker name="profile.birth_date" value={ values.profile.birth_date } onChange={ setFieldValue } 
+          className={ 'form-control' + (getIn(errors, 'profile.birth_date') && getIn(touched, 'profile.birth_date') ? ' is-invalid' : '') } />
           <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
         </div>
 
