@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './profile.module.css';
+import styles from './profileComponent.module.css';
 import Button from '../commons/Button/Button';
 
-const Profile = () => (
+const ProfileComponent = () => (
   <div className={styles.userprofile_container}>
     <div className={styles.up_container}>
       <div className={styles.img_container}>
@@ -27,4 +27,4 @@ const Profile = () => (
   </div>
 );
 
-export default Profile;
+export default ProfileComponent;
