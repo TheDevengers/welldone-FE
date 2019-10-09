@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './profileComponent.module.css';
 import Button from '../commons/Button/Button';
 
@@ -21,7 +22,9 @@ const ProfileComponent = () => (
             sin necesidad de una copia formal</p>
       </div>
       <div>
-        <Button className={styles.edit_profile_btn}>Edit</Button>
+        <Link to='/edit-profile'>
+          <Button className={styles.edit_profile_btn}>Edit</Button>
+        </Link>
       </div>
     </div>
   </div>
