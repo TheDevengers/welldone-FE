@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Nav } from './components/commons/index';
 import styles from './home.module.css';
 
-import ProfileComponent from './components/ProfileComponent/ProfileComponent';
+import Profile from './components/ProfileComponent/Index';
 import ListItems from './components/ListItems/ListItems';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -16,7 +16,7 @@ class App extends Component {
       <Fragment>
         <Nav />
         <div className={styles.profile_container}>
-          <ProfileComponent />
+          <Profile />
           <Tabs>
             <TabList>
               <Tab>Articles</Tab>
