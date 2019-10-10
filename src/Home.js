@@ -20,7 +20,7 @@ class App extends Component {
           <Tabs>
             <TabList>
               <Tab>Articles</Tab>
-              <Tab>Favourites</Tab>
+              <Tab>Favorites</Tab>
             </TabList>
 
             <TabPanel>
