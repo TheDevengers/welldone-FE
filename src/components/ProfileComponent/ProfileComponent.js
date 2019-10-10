@@ -8,7 +8,7 @@ const ProfileComponent = ({ profileInfo  }) => (
   <div className={styles.userprofile_container}>
     <div className={styles.up_container}>
       <div className={styles.img_container}>
-        <img src={defaultUserIcon}
+        <img src={profileInfo.profile.image_user ? profileInfo.profile.image_user : defaultUserIcon}
           alt="profile" />
       </div>
     </div>
