@@ -15,7 +15,7 @@ class App extends Component {
     return(
       <Fragment>
         <Nav />
-        <div className={styles.profile_container}>
+        <div className={styles.home_container}>
           <Profile />
           <Tabs>
             <TabList>
