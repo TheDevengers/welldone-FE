@@ -1,10 +1,3 @@
-/* .profile_container {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  padding-bottom: 70px;
-} */
-
 .userprofile_container {
   display: flex;
   flex-direction: column;
@@ -17,6 +10,8 @@
 }
 
 .up_container {
+  display: flex;
+  justify-content: center;
   height: 150px;
   width: 100%;
   background: #343a40;
@@ -28,7 +23,7 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  transform: translate(130px, 85px);
+  margin-top: 70px;
 }
 
 .img_container img {
@@ -102,7 +97,7 @@
   }
 
   .img_container {
-    transform: translate(360px, 40px);
+    margin-top: 30px;
   }
 
   .low_container div:nth-child(3) {
