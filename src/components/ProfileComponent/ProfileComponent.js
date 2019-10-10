@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './profileComponent.module.css';
 import Button from '../commons/Button/Button';
+import defaultUserIcon from '../../assets/default-user.jpg';
 
 const ProfileComponent = ({ profileInfo  }) => (
   <div className={styles.userprofile_container}>
     <div className={styles.up_container}>
       <div className={styles.img_container}>
-        <img src="https://avatars2.githubusercontent.com/u/24435223?s=400&u=b024e15a5157673adf007ea2049f96c810dee4c9&v=4"
+        <img src={defaultUserIcon}
           alt="profile" />
       </div>
     </div>
