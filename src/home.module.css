@@ -1,0 +1,10 @@
+.home_container {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 70px;
+}
+
+@media (min-width: 600px) {
+
+}
