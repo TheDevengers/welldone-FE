@@ -71,6 +71,7 @@
   background: transparent;
   color: #298d70;
   border: 2px solid #298d70;
+  cursor: pointer;
 }
 
 .user_description {
