@@ -36,8 +36,6 @@ const UserProfileSchema = Yup.object().shape({
     profile: Yup.object().shape({
       description: Yup.string()
           .max(150, 'Maximum of 150 characters'),
-      birth_date:Yup.string()
-          .min(10, 'Must be 10 characters'),
       birth_place: Yup.string()
           .max(70, 'Maximum of 70 characters'),
       image_user: Yup.string()
