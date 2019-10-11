@@ -7,7 +7,6 @@ const { editUserInfo, deleteUser } = api();
 export const editUserProfile = (id, values) => {
   return editUserInfo(id, values)
   .then((updateResponse) => {
-    console.log(updateResponse);
       if(updateResponse.error){
         return updateResponse;        
       }    
