@@ -170,7 +170,7 @@ return(
           <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
         </div>
 
-        <Button type="submit" className={styles.submit}>Submit</Button>
+        <Button type="submit" className={styles.submit}>Edit</Button>
           
         <ConfirmDialog title="Delete User" description="The user will be permanently deleted, are you sure you want to delete it?">
           {(confirm) => (
