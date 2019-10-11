@@ -59,10 +59,10 @@ return(
             username: dataUserProfile.username,
             email: dataUserProfile.email,
             profile: {
-              description: profileInfo.description || '',
-              birth_date: profileInfo.birth_date || '',
-              birth_place: profileInfo.birth_place || '',
-              image_user: profileInfo.image_user || ''
+              description: profileInfo  ?  profileInfo.description : '',
+              birth_date:  profileInfo ? profileInfo.birth_date : '',
+              birth_place: profileInfo ? profileInfo.birth_place : '',
+              image_user: profileInfo ? profileInfo.image_user : ''
             },
           } }
 
