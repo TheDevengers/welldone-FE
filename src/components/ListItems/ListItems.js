@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
-import Nav from '../commons/Nav/Nav';
 import api from '../../utils/api';
 
 const { getArticles, deleteArticle } = api();
@@ -34,20 +33,17 @@ class ListItems extends Component {
     const { articles } = this.state;
 
     return(
-      <Fragment>
-        <Nav />
-        <div className={styles.items_container}>
-          {
-            articles.map((item) => {
-              return <Item
-                key={item.id}
-                data={item}
-                deleteArticle={this.deleteArticle}
-              />;
-            })
-          }
-        </div>
-      </Fragment>
+      <div className={styles.items_container}>
+        {
+          articles && articles.map((item) => {
+            return <Item
+              key={item.id}
+              data={item}
+              deleteArticle={this.deleteArticle}
+            />;
+          })
+        }
+      </div>
     );
   }
 }
