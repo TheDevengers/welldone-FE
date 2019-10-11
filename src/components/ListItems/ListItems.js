@@ -35,7 +35,7 @@ class ListItems extends Component {
     return(
       <div className={styles.items_container}>
         {
-          articles.map((item) => {
+          articles && articles.map((item) => {
             return <Item
               key={item.id}
               data={item}
