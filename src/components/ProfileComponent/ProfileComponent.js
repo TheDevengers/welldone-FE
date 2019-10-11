@@ -8,7 +8,7 @@ const ProfileComponent = ({ profileInfo  }) => (
   <div className={styles.userprofile_container}>
     <div className={styles.up_container}>
       <div className={styles.img_container}>
-        <img src={profileInfo.profile.image_user ? profileInfo.profile.image_user : defaultUserIcon}
+        <img src={profileInfo.profile ? profileInfo.profile.image_user : defaultUserIcon}
           alt="profile" />
       </div>
     </div>
@@ -18,7 +18,7 @@ const ProfileComponent = ({ profileInfo  }) => (
         <h4>{`${profileInfo.first_name} ${profileInfo.last_name}`}</h4>
       </div>
       <div className={styles.user_description}>
-        <p>{profileInfo.profile.description}</p>
+        <p>{profileInfo.profile && profileInfo.profile.description}</p>
       </div>
       <div>
         <Link to='/edit-profile'>
