@@ -3,7 +3,7 @@ import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
 import api from '../../utils/api';
 
-const { getArticles, deleteArticle } = api();
+const { getArticles, deleteArticle, getFavorites } = api();
 
 class ListItems extends Component {
 
@@ -15,12 +15,22 @@ class ListItems extends Component {
   }
 
   componentDidMount() {
-    getArticles()
-    .then((response) => {
-      this.setState({
-        articles: response
-      });
-    });
+    const { tab } = this.props;
+    if(tab === 'articles') {
+      getArticles()
+        .then((response) => {
+          this.setState({
+            articles: response
+          });
+        });
+    } else if (tab === 'favorites')  {
+      getFavorites()
+        .then((response) => {
+          this.setState({
+            articles: response
+          });
+        });
+    }
   }
 
   deleteArticle = (id) => {
@@ -31,12 +41,14 @@ class ListItems extends Component {
 
   render() {
     const { articles } = this.state;
+    const { tab } = this.props;
 
     return(
       <div className={styles.items_container}>
         {
-          articles && articles.map((item) => {
+          articles && articles.length && articles.map((item) => {
             return <Item
+              tabType={tab}
               key={item.id}
               data={item}
               deleteArticle={this.deleteArticle}
