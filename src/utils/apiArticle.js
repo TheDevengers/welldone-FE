@@ -1,3 +1,6 @@
+import cookieStorage from '../persistence/cookieStorage';
+const { get } = cookieStorage();
+
 const checkCategoriesSelected = (categories) => {
     const categoriesSelected = categories.filter((category) => {
         return true ? category.checked : false;
@@ -29,7 +32,8 @@ const createArticle = async (article) => {
                 user_id: process.env.REACT_APP_USER_ID
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${get('accessKey')}`
             }
         })
         .then((response) => {

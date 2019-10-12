@@ -7,5 +7,6 @@ import Footer from './Footer/Footer';
 import Spinner from './Spinner/Spinner';
 import DatePicker from './Datepicker/DatePicker';
 import ConfirmDialog from './ConfirmDialog/ConfirmDialog';
+import NoMatch from './NoMatch/NoMatch';
 
-export { Input, Button, ButtonDelete, ModalBox, Nav, Footer, DatePicker, ConfirmDialog, Spinner };
+export { Input, Button, ButtonDelete, ModalBox, Nav, Footer, DatePicker, ConfirmDialog, Spinner, NoMatch };
