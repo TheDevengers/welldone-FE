@@ -46,7 +46,7 @@ class ListItems extends Component {
 
     if (articles && articles.length){
       return(
-          <div className={styles.items_container}>
+        <div className={styles.items_container}>
           {
             articles && articles.length && articles.map((item) => {
             return <Item
@@ -57,7 +57,7 @@ class ListItems extends Component {
             />;
             })
           }
-          </div>
+        </div>
         );
     } else {
       return (

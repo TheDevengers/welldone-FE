@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './itemNotFound.module.css';
-import { MdDelete, MdModeEdit } from 'react-icons/md';
 import notFoundIcon from '../../assets/not-found.png';
 
 const ItemNotFound = () => {
