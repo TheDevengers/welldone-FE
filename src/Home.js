@@ -4,7 +4,7 @@ import styles from './home.module.css';
 
 import Profile from './components/ProfileComponent/Index';
 import ListItems from './components/ListItems/ListItems';
-
+import ItemNotFound from './components/ItemNotFound/ItemNotFound';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -27,7 +27,7 @@ class App extends Component {
               <ListItems />
             </TabPanel>
             <TabPanel>
-              <h2>Here will be the favorite articles</h2>
+              <ItemNotFound />
             </TabPanel>
           </Tabs>
         </div>

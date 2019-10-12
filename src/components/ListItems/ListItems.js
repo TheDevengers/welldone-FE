@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
+import ItemNotFound from '../ItemNotFound/ItemNotFound.js';
 import api from '../../utils/api';
 
 const { getArticles, deleteArticle } = api();
@@ -31,20 +32,29 @@ class ListItems extends Component {
 
   render() {
     const { articles } = this.state;
-
-    return(
-      <div className={styles.items_container}>
-        {
-          articles && articles.map((item) => {
-            return <Item
-              key={item.id}
-              data={item}
-              deleteArticle={this.deleteArticle}
-            />;
-          })
-        }
-      </div>
-    );
+    
+    if (articles && articles.length){
+      return(
+        <div className={styles.items_container}>
+          {          
+            articles && articles.map((item) => {
+              return <Item
+                key={item.id}
+                data={item}
+                deleteArticle={this.deleteArticle}
+              />;
+            }
+            
+            )
+          }
+        </div>
+      );
+    } else {
+      return (
+        <ItemNotFound />
+      );
+    }
+    
   }
 }
 

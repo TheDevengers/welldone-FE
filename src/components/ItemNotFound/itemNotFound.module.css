@@ -1,0 +1,21 @@
+.item_container {
+  margin: 80px auto;
+  padding: 15px;
+  min-width: 230px;
+  vertical-align: middle;
+}
+
+.image_item {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  height: 7em;
+  width: 7em;
+}
+
+
+.text_item {
+  font-size: 1.875em;
+  text-align: center;
+}
+
