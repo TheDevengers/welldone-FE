@@ -25,7 +25,7 @@ class ListItems extends Component {
 
   deleteArticle = (id) => {
     deleteArticle(id);
-    const filteredArticles = this.state.articles ? this.state.articles.filter((movie) => movie.id !== id) : [];
+    const filteredArticles = this.state.articles ? this.state.articles.filter((article) => article.id !== id) : [];
     this.setState({ articles: filteredArticles });
   }
 
