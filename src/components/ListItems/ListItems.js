@@ -31,11 +31,8 @@ class ListItems extends Component {
       .finally(() => this.setState({ loading: false }));
     } else if (tab === 'favorites')  {
       getFavorites()
-        .then((response) => {
-          this.setState({
-            articles: response
-          });
-        });
+        .then((response) => this.setState({ articles: response }))
+        .finally(() => this.setState({ loading: false }));
     }
   }
 
