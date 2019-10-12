@@ -7,7 +7,7 @@ import Signup from '../components/Signup/Signup.js';
 import ArticleForm from '../components/ArticleForm';
 import EditItem from '../components/EditItemForm/Index';
 import UserProfile from '../components/UserProfileForm/index';
-import { Footer } from '../components/commons';
+import { Footer, NoMatch } from '../components/commons';
 import Home from '../Home';
 
 const App = () => (
@@ -19,6 +19,7 @@ const App = () => (
       <PrivateRoute path="/create-article" exact component={ArticleForm} />
       <PrivateRoute path="/edit-article/:id" exact component={EditItem} />
       <PrivateRoute path="/edit-profile" exact component={UserProfile} />
+      <PrivateRoute component={NoMatch} />
     </Switch>
     <Footer />
   </Router>
