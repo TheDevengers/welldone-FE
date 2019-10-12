@@ -24,10 +24,10 @@ class App extends Component {
             </TabList>
 
             <TabPanel>
-              <ListItems />
+              <ListItems tab="articles"/>
             </TabPanel>
             <TabPanel>
-              <h2>Here will be the favorite articles</h2>
+              <ListItems tab="favorites" />
             </TabPanel>
           </Tabs>
         </div>

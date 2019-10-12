@@ -85,6 +85,20 @@ const api = () => {
       .then((res) => res.json())
       .then((article) => article)
       .catch((err) => console.log(err));
+    },
+
+    getFavorites: () => {
+      return fetch(`${process.env.REACT_APP_API}/favorites`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${get('accessKey')}`
+        }
+      })
+        .then((res) => res.json())
+        .then((article) => article)
+        .catch((err) => console.log(err));
     }
   };
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './item.module.css';
 import { MdDelete, MdModeEdit } from 'react-icons/md';
+import { FaHeart } from 'react-icons/fa';
 
 const SIZE = '25px';
 
@@ -16,10 +17,16 @@ const Item = ({ data, ...props }) => {
           <div className={styles.nav_content}>
             <h1 className={styles.content_title}>{data.title}</h1>
             <div className={styles.icons}>
-              <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)}/>
-              <Link className={styles.link} to={`/edit-article/${data.id}`}>
-                <MdModeEdit size={SIZE} />
-              </Link>
+              {
+                props.tabType === 'articles' ? (
+                  <>
+                    <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)} />
+                    <Link className={styles.link} to={`/edit-article/${data.id}`}>
+                      <MdModeEdit size={SIZE} />
+                    </Link>
+                  </>
+                ) 
+                  : <FaHeart size={SIZE}></FaHeart>}
             </div>
           </div>
           <p className={styles.item_description}>{data.introduction}</p>
