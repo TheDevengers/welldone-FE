@@ -19,7 +19,7 @@ const Nav = () => {
           <a className="nav-link" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
         </li>
         <li>
-          <a className="nav-link" alt="movie" href="/create-article" style={{ color: 'green' }}><TiDocumentAdd size={SIZE} /></a>
+          <a className="nav-link" alt="article" href="/create-article" style={{ color: 'green' }}><TiDocumentAdd size={SIZE} /></a>
         </li>
         <li>
           <a className="nav-link" onClick={logout} style={{ color: 'green' }}><MdExitToApp size={SIZE} /></a>

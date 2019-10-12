@@ -53,6 +53,10 @@ class ArticleForm extends React.Component{
       e.preventDefault();
       const result = await createArticle(Object.assign({}, this.state, { state: articleState }));
 
+      if(result.ok) {
+        this.props.history.push('/');
+      }
+
       if(result && !result.ok){
         this.setState({ error: true });
       }
