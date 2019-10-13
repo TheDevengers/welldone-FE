@@ -3,6 +3,9 @@ import { createArticle, retrieveCategories } from '../../utils/apiArticle.js';
 import { Input, Button, ModalBox, Nav } from '../commons';
 import styles from './articleForm.module.css';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class ArticleForm extends React.Component{
     constructor(props){
         super(props);
@@ -16,13 +19,22 @@ class ArticleForm extends React.Component{
         };
     }
 
-    componentDidMount = async() => {
-      const categories = await retrieveCategories();
-      if(categories.length){
-        categories.map((category) => {
-          this.setState((state) => {
-              state.categories.push(Object.assign({}, category, { checked: false }));
-              return state;
+    componentDidMount = async () => {
+      try {
+        const categories = await retrieveCategories();
+        if(categories.length){
+          categories.map((category) => {
+            this.setState((state) => {
+                state.categories.push(Object.assign({}, category, { checked: false }));
+                return state;
+            });
+          });
+        }
+      } catch(err) {
+        this.props.handleError(err, () => {
+          toast.error('Unable to load categories', {
+            autoClose: false,
+            position: toast.POSITION.BOTTOM_CENTER
           });
         });
       }
