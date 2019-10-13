@@ -38,7 +38,8 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-      .then((res) => errorHandler(res));
+      .then((res) => errorHandler(res))
+      .catch((err) => console.log(err));
     },
 
     editArticle: (id, data) => {
@@ -87,7 +88,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-        .then((res) => errorHandler(res));
+      .then((res) => errorHandler(res));
     }
   };
 };

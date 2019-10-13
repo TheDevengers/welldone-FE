@@ -5,6 +5,7 @@ export const errorHandler = (response) => {
   const types = {
     200: () => response.json(),
     201: () => response.json(),
+    204: () => response.json(),
     401: () => { error = {
       name: actionTypes.HTTP_401_ERROR,
       message: response.statusText
