@@ -12,7 +12,7 @@ export const editItem = (id, values) => {
   }))
   .catch(() => toast.error('An error occurred when editing the article', {
     position: toast.POSITION.BOTTOM_CENTER
-}))
+  }))
   .finally(() => {
     window.location.href = '/';
   });
