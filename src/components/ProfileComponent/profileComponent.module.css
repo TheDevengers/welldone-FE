@@ -64,7 +64,7 @@
   font-size: 12px;
   text-decoration: none;
   font-weight: bold;
-  transition: all .3 ease-in;
+  transition: all .15s linear;
 }
 
 .low_container .edit_profile_btn:hover {
