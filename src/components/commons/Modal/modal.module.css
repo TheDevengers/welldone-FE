@@ -1,3 +1,21 @@
-.modal_description{
-    padding: 10px 20px;
+.modal_description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 300px;
+  padding: 10px 20px;
+}
+
+.message {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding-left: 5px;
+}
+
+@media (min-width: 600px) {
+  .modal_description{
+      height: 70vh;
+      width: 500px
+  }
 }
