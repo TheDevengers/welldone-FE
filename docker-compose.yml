@@ -4,3 +4,5 @@ services:
   react:
     build: .
     container_name: django-project
+    volumes:
+      - ./credentials:/credentials
