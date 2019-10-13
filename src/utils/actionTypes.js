@@ -1,0 +1,3 @@
+export const HTTP_401_ERROR = 'HTTP_401_ERROR';
+export const HTTP_500_ERROR = 'HTTP_500_ERROR';
+export const HTTP_OTHER_ERROR = 'HTTP_OTHER_ERROR';
