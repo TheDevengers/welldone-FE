@@ -8,6 +8,8 @@ import ListItems from './components/ListItems/ListItems';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+import { ErrorContext } from './context/ErrorProvider';
+
 class App extends Component {
 
   // eslint-disable-next-line class-methods-use-this
@@ -16,7 +18,11 @@ class App extends Component {
       <Fragment>
         <Nav />
         <div className={styles.home_container}>
-          <Profile />
+          <ErrorContext.Consumer>
+            {({ showError }) => (
+              <Profile handleError={showError} />
+            )}
+          </ErrorContext.Consumer>
           <Tabs>
             <TabList>
               <Tab>Articles</Tab>
@@ -24,10 +30,18 @@ class App extends Component {
             </TabList>
 
             <TabPanel>
-              <ListItems tab="articles"/>
+              <ErrorContext.Consumer>
+                {({ showError }) => (
+                  <ListItems handleError={showError} tab="articles"/>
+                )}
+              </ErrorContext.Consumer>
             </TabPanel>
             <TabPanel>
-              <ListItems tab="favorites" />
+              <ErrorContext.Consumer>
+                {({ showError }) => (
+                  <ListItems handleError={showError} tab="favorites" />
+                )}
+              </ErrorContext.Consumer>
             </TabPanel>
           </Tabs>
         </div>
