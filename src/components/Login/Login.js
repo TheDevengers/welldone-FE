@@ -18,7 +18,7 @@ const Login = () => (
   <div className={styles.login_container}>
     <div className={styles.icon_container}>
       <picture>
-        <img src={logo} alt="movie" className={styles.logo} />
+        <img src={logo} alt="logo" className={styles.logo} />
       </picture>
     </div>
     <Formik

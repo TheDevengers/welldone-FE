@@ -21,8 +21,6 @@ class UserProfile extends Component {
   componentDidMount() {
     getUserInfo(get('id'))
     .then((userInfo) => {
-      console.log('USERINFO');
-      console.log(userInfo);
       this.setState({ userProfileInfo: userInfo, profileInfo: userInfo.profile });
     });
   }

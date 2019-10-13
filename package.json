@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "@reach/dialog": "^0.2.9",
+    "bootstrap": "^4.3.1",
     "formik": "^1.5.8",
     "js-cookie": "^2.2.1",
     "react": "^16.9.0",
@@ -14,6 +15,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-select": "^3.0.8",
+    "react-tabs": "^3.0.0",
     "yup": "^0.27.0"
   },
   "scripts": {

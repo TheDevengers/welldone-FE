@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
-import Nav from '../commons/Nav/Nav';
+import ItemNotFound from '../ItemNotFound/ItemNotFound.js';
 import api from '../../utils/api';
 
-const { getArticles, deleteArticle } = api();
+const { getArticles, deleteArticle, getFavorites } = api();
 
 class ListItems extends Component {
 
@@ -16,39 +16,54 @@ class ListItems extends Component {
   }
 
   componentDidMount() {
-    getArticles()
-    .then((response) => {
-      this.setState({
-        articles: response
-      });
-    });
+    const { tab } = this.props;
+    if(tab === 'articles') {
+      getArticles()
+        .then((response) => {
+          this.setState({
+            articles: response
+          });
+        });
+    } else if (tab === 'favorites')  {
+      getFavorites()
+        .then((response) => {
+          this.setState({
+            articles: response
+          });
+        });
+    }
   }
 
   deleteArticle = (id) => {
     deleteArticle(id);
-    const filteredArticles = this.state.articles ? this.state.articles.filter((movie) => movie.id !== id) : [];
+    const filteredArticles = this.state.articles ? this.state.articles.filter((article) => article.id !== id) : [];
     this.setState({ articles: filteredArticles });
   }
 
   render() {
     const { articles } = this.state;
+    const { tab } = this.props;
 
-    return(
-      <Fragment>
-        <Nav />
+    if (articles && articles.length){
+      return(
         <div className={styles.items_container}>
           {
-            articles.map((item) => {
-              return <Item
-                key={item.id}
-                data={item}
-                deleteArticle={this.deleteArticle}
-              />;
+            articles && articles.length && articles.map((item) => {
+            return <Item
+              tabType={tab}
+              key={item.id}
+              data={item}
+              deleteArticle={this.deleteArticle}
+            />;
             })
           }
         </div>
-      </Fragment>
-    );
+        );
+    } else {
+      return (
+        <ItemNotFound />
+      );
+    }
   }
 }
 
