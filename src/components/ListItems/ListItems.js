@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
 import api from '../../utils/api';
-import { Spinner, ModalBox } from '../commons/index';
+import { Spinner } from '../commons/index';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,7 @@ class ListItems extends Component {
     super(props);
     this.state = {
       articles: [],
-      loading: true
+      loading: true,
     };
   }
 
@@ -24,14 +24,26 @@ class ListItems extends Component {
     if(tab === 'articles') {
       getArticles()
       .then((response) => this.setState({ articles: response }))
-      .catch((err) => toast.error('Unable to load articles', {
-        autoClose: false,
-        position: toast.POSITION.BOTTOM_CENTER
-      }))
+      .catch((err) => {
+        this.props.handleError(err, () => {
+          toast.error('Unable to load articles', {
+            autoClose: false,
+            position: toast.POSITION.BOTTOM_CENTER
+          });
+        });
+      })
       .finally(() => this.setState({ loading: false }));
     } else if (tab === 'favorites')  {
       getFavorites()
         .then((response) => this.setState({ articles: response }))
+        .catch((err) => {
+          this.props.handleError(err, () => {
+            toast.error('Unable to load favorites articles', {
+              autoClose: false,
+              position: toast.POSITION.BOTTOM_CENTER
+            });
+          });
+        })
         .finally(() => this.setState({ loading: false }));
     }
   }
@@ -46,10 +58,6 @@ class ListItems extends Component {
     });
 
   }
-
-    onHandleCloseModal = () => {
-      this.setState({ error: false });
-    };
 
   render() {
     const { articles, loading } = this.state;
