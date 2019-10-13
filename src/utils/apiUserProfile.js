@@ -1,9 +1,10 @@
 import cookieStorage from '../persistence/cookieStorage';
+import { errorHandler } from './errorHandler';
+
 const { get } = cookieStorage();
 
 const apiUserProfile = () => {
   return {
-    
     getUserInfo: (id) => {
         return fetch(`${ process.env.REACT_APP_API }/users/${id}`, {
           method: 'GET',
@@ -13,9 +14,7 @@ const apiUserProfile = () => {
             'Authorization': `Bearer ${get('accessKey')}`
           }
         })
-        .then((res) => res.json())
-        .then((userInfo) => userInfo)
-        .catch((err) => console.log(err));
+        .then((res) => errorHandler(res));
       },
 
       editUserInfo: async (id, data) => {
