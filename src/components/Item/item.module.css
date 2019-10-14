@@ -17,6 +17,7 @@
   background-color: white;
   height: 330px;
   width: 100%;
+  object-fit: cover;
   -webkit-box-shadow: -1px 0px 7px -4px rgba(0,0,0,0.98);
   box-shadow: -1px 0px 7px -4px rgba(0,0,0,0.98);
   border-radius: 8px;
