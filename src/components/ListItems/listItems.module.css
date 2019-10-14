@@ -1,3 +1,9 @@
 .items_container {
   margin-bottom: 70px;
 }
+
+@media (min-width: 1024px) {
+  .items_container {
+    padding: 2px 50px;
+  }
+}
