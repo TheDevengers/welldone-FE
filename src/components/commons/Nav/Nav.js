@@ -9,10 +9,10 @@ const SIZE = '38px';
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark" style={{ height: '68px' }}>
-      <a className="navbar-brand" href="/"><LogoSimple /></a>
+    <nav className="navbar navbar-expand navbar-dark bg-dark" style={{ height: '68px', padding: 0 }}>
+      <a className="navbar-brand" style={{ margin: 0 }} href="/"><LogoSimple /></a>
 
-      <ul className="navbar-nav ml-auto">
+      <ul className="navbar-nav  ml-auto">
         <li>
           <a className="nav-link" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
         </li>
