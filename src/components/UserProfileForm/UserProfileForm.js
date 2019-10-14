@@ -95,6 +95,7 @@ return(
 
     {({ errors, touched, values, setFieldValue, handleBlur }) => (
       <Form noValidate className={styles.form}>
+        <h1 className={styles.title}>User details</h1>
         <div className={styles.form_group}>
           <label htmlFor="first_name">First Name:</label>
           <Field name="first_name" type="text" value={values.first_name}
