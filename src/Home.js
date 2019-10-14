@@ -4,7 +4,6 @@ import styles from './home.module.css';
 
 import Profile from './components/ProfileComponent/Index';
 import ListItems from './components/ListItems/ListItems';
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 

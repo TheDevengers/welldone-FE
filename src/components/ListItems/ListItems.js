@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './listItems.module.css';
 import Item from '../Item/Item.js';
+import ItemNotFound from '../ItemNotFound/ItemNotFound.js';
 import api from '../../utils/api';
 import { Spinner } from '../commons/index';
 
@@ -67,20 +68,22 @@ class ListItems extends Component {
       return <Spinner />;
     }
 
-    return(
-      <div className={styles.items_container}>
-        {
-          articles && articles.length && articles.map((item) => {
-            return <Item
-              tabType={tab}
-              key={item.id}
-              data={item}
-              deleteArticle={this.deleteArticle}
-            />;
-          })
-        }
-      </div>
-    );
+    if (articles && articles.length) {
+      return (
+        <div className={styles.items_container}>
+          {
+            articles.map((item) =>
+              <Item
+                tabType={tab}
+                key={item.id}
+                data={item}
+                deleteArticle={this.deleteArticle}
+              />)
+          }
+        </div>
+      );
+    }
+    return ( <ItemNotFound /> );
   }
 }
 
