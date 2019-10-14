@@ -1,1 +1,14 @@
 .navbar {min-height:32px !important}
+
+.nav {
+  height: 68px;
+  padding: 0;
+}
+
+.logo {
+  margin: 0;
+}
+
+.nav .nav_container .icon {
+  color: green;
+}
