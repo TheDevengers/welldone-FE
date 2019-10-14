@@ -5,7 +5,6 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -82,10 +81,6 @@
   .profile_container {
     margin: 0 70px;
 
-  }
-
-  .userprofile_container {
-    border-radius: 0;
   }
 
   .user_description {
