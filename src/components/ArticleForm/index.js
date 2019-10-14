@@ -22,7 +22,7 @@ class ArticleForm extends React.Component{
     componentDidMount = async () => {
       try {
         const categories = await retrieveCategories();
-        if(categories.length){
+        if(categories && categories.length){
           categories.map((category) => {
             this.setState((state) => {
                 state.categories.push(Object.assign({}, category, { checked: false }));
