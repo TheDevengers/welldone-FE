@@ -3,6 +3,9 @@ import Nav from '../commons/Nav/Nav.js';
 import EditItemForm from './EditItemForm.js';
 import api from '../../utils/api';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const { getArticle, getCategories } = api();
 
 class EditItem extends Component {
@@ -18,9 +21,26 @@ class EditItem extends Component {
 
   componentDidMount() {
     getCategories()
-    .then((categories) => this.setState({ categories: this._formatCategories(categories) }));
+    .then((categories) => this.setState({ categories: this._formatCategories(categories) }))
+    .catch((err) => {
+      this.props.handleError(err, () => {
+        toast.error('Unable to load categories', {
+          autoClose: false,
+          position: toast.POSITION.BOTTOM_CENTER
+        });
+      });
+    });
+
     getArticle(this.state.id)
-    .then((article) => this.setState({ articleDetail: article }));
+    .then((article) => this.setState({ articleDetail: article }))
+    .catch((err) => {
+      this.props.handleError(err, () => {
+        toast.error('Unable to load articles', {
+          autoClose: false,
+          position: toast.POSITION.BOTTOM_CENTER
+        });
+      });
+    });
   }
 
   // eslint-disable-next-line class-methods-use-this

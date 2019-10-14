@@ -1,10 +1,16 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import styles from './modal.module.css';
+import { MdError } from 'react-icons/md';
+
+const SIZE = '30px';
 
 const ModalBox = ({ open, onClose, message }) => (
   <Dialog onClose={onClose} open={open} className={styles.modal}>
-    <p className={styles.modal_description}>{message}</p>
+    <div className={styles.modal_description}>
+      <MdError size={SIZE}/>
+      <p className={styles.message}>{message}</p>
+    </div>
   </Dialog>
 );
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import { logout } from '../../../persistence/access';
 
-import styles from './nav.module.css';
-
 import { LogoSimple } from '../Logo/LogoSimple';
 import { MdAccountCircle, MdExitToApp } from 'react-icons/md';
 import { TiDocumentAdd } from 'react-icons/ti';

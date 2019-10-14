@@ -1,4 +1,5 @@
 import cookieStorage from '../persistence/cookieStorage';
+import { errorHandler } from './errorHandler';
 const { get } = cookieStorage();
 
 const api = () => {
@@ -25,9 +26,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         },
       })
-      .then((res) => res.json())
-      .then((articles) => articles)
-      .catch((err) => console.err(err));
+      .then((res) => errorHandler(res));
     },
 
     deleteArticle: (id) => {
@@ -39,8 +38,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-      .then((res) => res.json())
-      .then((data) => console.log('Article deleted'))
+      .then((res) => errorHandler(res))
       .catch((err) => console.log(err));
     },
 
@@ -54,9 +52,7 @@ const api = () => {
         },
         body:JSON.stringify(data)
       })
-      .then((res) => res.json())
-      .then((response) => response)
-      .catch((err) => console.log(err));
+      .then((res) => errorHandler(res));
     },
 
     getCategories: () => {
@@ -68,9 +64,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-      .then((res) => res.json())
-      .then((categories) => categories)
-      .catch((err) => console.log(err));
+      .then((res) => errorHandler(res));
     },
 
     getArticle: (id) => {
@@ -82,9 +76,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-      .then((res) => res.json())
-      .then((article) => article)
-      .catch((err) => console.log(err));
+      .then((res) => errorHandler(res));
     },
 
     getFavorites: () => {
@@ -96,9 +88,7 @@ const api = () => {
           'Authorization': `Bearer ${get('accessKey')}`
         }
       })
-        .then((res) => res.json())
-        .then((article) => article)
-        .catch((err) => console.log(err));
+      .then((res) => errorHandler(res));
     }
   };
 };
