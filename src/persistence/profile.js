@@ -10,19 +10,18 @@ export const editUserProfile = (id, values) => {
   return editUserInfo(id, values)
   .then((updateResponse) => {
     if(updateResponse.error){
+      toast.error('An error occurred when editing the profile information', {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
       return updateResponse;
     }
-    toast.success('Article edited', {
+    toast.success('User edited', {
       autoClose: 1000,
       position: toast.POSITION.BOTTOM_CENTER
     });
   })
-  .catch(() => toast.error('An error occurred when editing the article', {
-    position: toast.POSITION.BOTTOM_CENTER
-  }))
-  .finally(() => {
-    window.location.href = '/';
-  });
+  .catch((error) => console.log(error));
+
 };
 
 export const deleteUserProfile = (id) => {
