@@ -12,17 +12,15 @@ export const editUserProfile = (id, values) => {
     if(updateResponse.error){
       return updateResponse;
     }
-    toast.success('Article edited', {
+    toast.success('User edited', {
       autoClose: 1000,
       position: toast.POSITION.BOTTOM_CENTER
     });
   })
-  .catch(() => toast.error('An error occurred when editing the article', {
+  .catch(() => toast.error('An error occurred when editing the profile information', {
     position: toast.POSITION.BOTTOM_CENTER
-  }))
-  .finally(() => {
-    window.location.href = '/';
-  });
+  }));
+
 };
 
 export const deleteUserProfile = (id) => {

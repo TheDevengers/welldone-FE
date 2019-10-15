@@ -87,9 +87,13 @@ return(
             }
  
             const response = await editUserProfile(get('id'), values);
-            setError(response.error);
-            setDataError(response);
-            
+            if (response && response.error) {
+              setError(response.error);
+              setDataError(response);
+            } else {
+              window.location.href = '/';
+            }
+
           }}
         >
 
