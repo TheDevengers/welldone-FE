@@ -25,7 +25,7 @@ const Item = ({ data, ...props }) => {
                       <MdModeEdit size={SIZE} />
                     </Link>
                   </>
-                ) 
+                )
                   : <FaHeart size={SIZE}></FaHeart>}
             </div>
           </div>
