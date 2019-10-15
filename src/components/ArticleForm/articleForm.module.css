@@ -10,6 +10,14 @@
   width: 90%;
 }
 
+.title {
+  width: 70%;
+  margin-top: 0.3em;
+  margin-bottom: 0.8em;
+  color: green;
+}
+
+
 .form_group {
   width: 100%;
   display: flex;

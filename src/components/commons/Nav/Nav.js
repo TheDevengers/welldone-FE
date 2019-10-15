@@ -15,7 +15,7 @@ const Nav = () => {
       <a className={`navbar-brand ${styles.logo}`}  href="/"><LogoSimple /></a>
       <ul className={`navbar-nav  ml-auto ${styles.nav_container}`}>
         <li>
-          <a className={`nav-link ${styles.icon}`}><MdAccountCircle size={SIZE} /></a>
+          <a className={`nav-link ${styles.icon}`} href="/edit-profile"><MdAccountCircle size={SIZE} /></a>
         </li>
         <li>
           <a className={`nav-link ${styles.icon}`} alt="article" href="/create-article"><TiDocumentAdd size={SIZE} /></a>

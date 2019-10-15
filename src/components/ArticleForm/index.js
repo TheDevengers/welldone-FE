@@ -87,6 +87,7 @@ class ArticleForm extends React.Component{
 
           <Nav />
           <div className={styles.article_form_container}>
+            <h1 className={styles.title}>Create article</h1>
             {error ? (
               <ModalBox message="There is a problem to create a new article. Try again!" open={error} onClose={this.onHandleCloseModal}></ModalBox>
               ) : null

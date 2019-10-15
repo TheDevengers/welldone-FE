@@ -42,6 +42,7 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
   >
     {({ handleSubmit, errors, touched, handleChange, handleBlur, values }) => (
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
+        <h1 className={styles.title}>Edit article</h1>
         <div className={styles.form_group}>
           <label className={styles.form_label} htmlFor="text">Title:</label>
           <Input
