@@ -10,6 +10,9 @@ export const editUserProfile = (id, values) => {
   return editUserInfo(id, values)
   .then((updateResponse) => {
     if(updateResponse.error){
+      toast.error('An error occurred when editing the profile information', {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
       return updateResponse;
     }
     toast.success('User edited', {
@@ -17,9 +20,7 @@ export const editUserProfile = (id, values) => {
       position: toast.POSITION.BOTTOM_CENTER
     });
   })
-  .catch(() => toast.error('An error occurred when editing the profile information', {
-    position: toast.POSITION.BOTTOM_CENTER
-  }));
+  .catch((error) => console.log(error));
 
 };
 
