@@ -14,7 +14,7 @@ const Nav = () => {
 
       <ul className="navbar-nav ml-auto">
         <li>
-          <a className="nav-link" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
+          <a className="nav-link" href="/edit-profile" style={{ color: 'green' }}><MdAccountCircle size={SIZE} /></a>
         </li>
         <li>
           <a className="nav-link" alt="article" href="/create-article" style={{ color: 'green' }}><TiDocumentAdd size={SIZE} /></a>

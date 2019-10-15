@@ -6,6 +6,13 @@
   padding: 40px 0;
 }
 
+.title {
+  width: 60%;
+  margin-bottom: 0.8em;
+  color: green;
+}
+
+
 .input {
   width: 100%;
 }

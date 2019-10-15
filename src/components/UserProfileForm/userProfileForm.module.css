@@ -1,3 +1,10 @@
+.title {
+  width: 60%;
+  margin: auto;
+  margin-top: 0.8em;
+  color: green;
+}
+
 .form {
   padding-bottom: 2em;
   margin-bottom: 2em;
