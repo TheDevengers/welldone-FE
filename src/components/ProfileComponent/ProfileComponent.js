@@ -22,7 +22,7 @@ const ProfileComponent = ({ profileInfo  }) => (
       </div>
       <div>
         <Link to='/edit-profile'>
-          <Button className={styles.edit_profile_btn}>Edit</Button>
+          <Button data-cy="edit-profile-btn" className={styles.edit_profile_btn}>Edit</Button>
         </Link>
       </div>
     </div>

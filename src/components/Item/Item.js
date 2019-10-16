@@ -8,7 +8,7 @@ const SIZE = '25px';
 
 const Item = ({ data, ...props }) => {
   return(
-    <div className={styles.item_container}>
+    <div data-cy="list-items" className={styles.item_container}>
       <picture>
         <img src={data.image} alt="article" className={styles.image_item} />
       </picture>
@@ -20,7 +20,7 @@ const Item = ({ data, ...props }) => {
               {
                 props.tabType === 'articles' ? (
                   <>
-                    <MdDelete size={SIZE} onClick={() => props.deleteArticle(data.id)} />
+                    <MdDelete data-cy={`delete-article-${data.id}`} size={SIZE} onClick={() => props.deleteArticle(data.id)} />
                     <Link className={styles.link} to={`/edit-article/${data.id}`}>
                       <MdModeEdit size={SIZE} />
                     </Link>

@@ -68,7 +68,7 @@ const Login = () => (
     <div className={styles.signup_container}>
       <p className={styles.signup_text}>Don't have an account yet?</p>
       <Link className={styles.link} to="/signup">
-        <Button type="submit">Signup</Button>
+        <Button data-cy="signup-field" type="submit">Signup</Button>
       </Link>
     </div>
   </div>
