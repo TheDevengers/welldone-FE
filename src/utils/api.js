@@ -1,5 +1,7 @@
 import cookieStorage from '../persistence/cookieStorage';
 import { errorHandler } from './errorHandler';
+import { reject } from 'q';
+const axios = require('axios').default;
 const { get } = cookieStorage();
 
 const api = () => {
@@ -12,7 +14,12 @@ const api = () => {
         },
         body: JSON.stringify(data),
       })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status!==200){
+          reject(new Error('User or password is wrong'));
+        }
+        res.json();
+      })
       .then((articles) => articles)
       .catch((error) => console.log('Error:', error));
     },

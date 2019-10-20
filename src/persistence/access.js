@@ -1,4 +1,5 @@
 import api from '../utils/api';
+import { reject } from 'q';
 import cookieStorage from './cookieStorage';
 
 const { postUser } = api();
@@ -12,7 +13,9 @@ export const doLogin =  (values) =>
     set('id', id);
     window.location.href = '/';
   })
-  .catch(() => new Error());
+  .catch((err) => {
+    return ('user or password is wrong');
+  });
 
 export const logout = () => {
   remove('accessKey');
