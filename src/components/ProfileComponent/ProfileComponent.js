@@ -15,14 +15,14 @@ const ProfileComponent = ({ profileInfo  }) => (
     <div className={styles.low_container}>
       <div>
         <h3>{profileInfo.username}</h3>
-        <h4>{`${profileInfo.first_name} ${profileInfo.last_name}`}</h4>
+        <h4 data-cy="profile-name-surname-label">{`${profileInfo.first_name} ${profileInfo.last_name}`}</h4>
       </div>
       <div className={styles.user_description}>
         <p>{profileInfo.profile && profileInfo.profile.description}</p>
       </div>
       <div>
         <Link to='/edit-profile'>
-          <Button className={styles.edit_profile_btn}>Edit</Button>
+          <Button data-cy="edit-profile-btn" className={styles.edit_profile_btn}>Edit</Button>
         </Link>
       </div>
     </div>

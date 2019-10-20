@@ -1,0 +1,19 @@
+{
+  "id": 56,
+  "title": "State Management with React Hooks",
+  "introduction": "Today, we are going to explore it and develop a custom Hook to manage global states — an easier to use method than Redux, and more performant than Context API.",
+  "body": "The idea behind the hooks API is that you can use a setter function returned as the second array item from the hook function and that setter will control state which is managed by the hook.",
+  "categories": [
+    {
+      "id": 2,
+      "name": "Frontend"
+    },
+    {
+      "id": 4,
+      "name": "developer"
+    }
+  ],
+  "state": "DR",
+  "slug": "state-management-with-react-hooks",
+  "image": "https://makeitreal.camp/assets/react-logo-ac85b6b5793992bc49365c389fe88d09b100c758d6981653724ad613764911b2.png"
+}

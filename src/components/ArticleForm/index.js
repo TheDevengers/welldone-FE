@@ -95,20 +95,20 @@ class ArticleForm extends React.Component{
             <form className={styles.form}>
               <div className={styles.form_group}>
                 <label className={styles.form_label} htmlFor="title" >Title</label>
-                <Input type="text" id="title" name="title" value={ title } onChange={ (e) => this.onChangeField(e) } required/>
+                <Input data-cy="article-title" type="text" id="title" name="title" value={ title } onChange={ (e) => this.onChangeField(e) } required/>
                 <label className={styles.form_label} htmlFor="intro">Intro</label>
-                <Input type="text" id="intro" name="intro" value={ intro } onChange={ (e) => this.onChangeField(e) } required/>
+                <Input data-cy="article-intro" type="text" id="intro" name="intro" value={ intro } onChange={ (e) => this.onChangeField(e) } required/>
                 <label className={styles.form_label} htmlFor="image">Image</label>
-                <Input type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
+                <Input data-cy="article-image" type="url" id="image" name="image" value={ image } onChange={ (e) => this.onChangeField(e) } />
                 <label className={styles.form_label} htmlFor="content">Content</label>
-                <textarea className={styles.form_textarea} id="content" name="content" onChange={ (e) => this.onChangeField(e) } rows="20" required/>
+                <textarea data-cy="article-content" className={styles.form_textarea} id="content" name="content" onChange={ (e) => this.onChangeField(e) } rows="20" required/>
                 <label className={styles.form_label}>Categories</label>
                 <div className={styles.form_choices}>
                   {
                     categories.map((category) => {
                         return (
                           <span key={ category.id } className={styles.form_choice}>
-                            <input type="checkbox" 
+                            <input data-cy={`category-checkbox-${category.id}`} type="checkbox" 
                             value={ category.name } 
                             checked={ category.checked }
                             onChange={ () => this.onChangeCategory(category) }
@@ -120,7 +120,7 @@ class ArticleForm extends React.Component{
                 }
                 </div>
                 <div className={styles.form__buttonGroup}>
-                  <Button onClick={ (e)=> this.onSendArticle(e, ARTICLE_STATE[ 0 ]) }>Publish</Button>
+                  <Button data-cy="create-article-btn" onClick={ (e)=> this.onSendArticle(e, ARTICLE_STATE[ 0 ]) }>Publish</Button>
                   <Button onClick={ (e)=> this.onSendArticle(e, ARTICLE_STATE[ 1 ]) }> Save As A Draft </Button>
                 </div>
               </div>

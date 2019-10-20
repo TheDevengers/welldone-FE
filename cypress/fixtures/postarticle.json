@@ -1,0 +1,15 @@
+{
+  "id": 54,
+  "title": "Titulo nuevo",
+  "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis aenean et tortor at risus",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Web components"
+    }
+  ],
+  "state": "PB",
+  "slug": "titulo-nuevo",
+  "image": "https://cdn.auth0.com/blog/logos/polymer-project.png"
+}

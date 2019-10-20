@@ -102,7 +102,7 @@ return(
         <h1 className={styles.title}>User details</h1>
         <div className={styles.form_group}>
           <label htmlFor="first_name">First Name:</label>
-          <Field name="first_name" type="text" value={values.first_name}
+          <Field data-cy="first-name-label" name="first_name" type="text" value={values.first_name}
           className={ 'form-control' + (errors.first_name && touched.first_name ? ' is-invalid' : '') } />
           <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
           {
@@ -114,7 +114,7 @@ return(
 
         <div className={styles.form_group}>
           <label htmlFor="last_name">Last Name:</label>
-          <Field name="last_name" type="text" value={values.last_name} onBlur={handleBlur}
+          <Field data-cy="last-name-label" name="last_name" type="text" value={values.last_name} onBlur={handleBlur}
           className={ 'form-control' + (errors.last_name && touched.last_name ? ' is-invalid' : '') } />
           <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
           {
@@ -126,7 +126,7 @@ return(
 
         <div className={styles.form_group}>
           <label htmlFor="username">Username:</label>
-          <Field name="username" type="text" value={values.username} onBlur={handleBlur}
+          <Field data-cy="username-label" name="username" type="text" value={values.username} onBlur={handleBlur}
           className={ 'form-control' + (errors.username && touched.username ? ' is-invalid' : '') } />
           <ErrorMessage name="username" component="div" className="invalid-feedback" />
           {
@@ -137,7 +137,7 @@ return(
         </div>
         <div className={styles.form_group}>
           <label htmlFor="email">Email:</label>
-          <Field name="email" type="text" value={values.email}
+          <Field data-cy="email-label" name="email" type="text" value={values.email}
           className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '') } />
           <ErrorMessage name="email" component="div" className="invalid-feedback" />
           {
@@ -149,21 +149,21 @@ return(
 
         <div className={styles.form_group}>
           <label htmlFor="profile.image_user">Profile Picture:</label> 
-          <Field name="profile.image_user" type="text" value={values.profile.image_user} onBlur={handleBlur}
+          <Field data-cy="image-user-label" name="profile.image_user" type="text" value={values.profile.image_user} onBlur={handleBlur}
           className={ 'form-control' + (getIn(errors, 'profile.image_user') && getIn(touched, 'profile.image_user') ? ' is-invalid' : '') } />
           <ErrorMessage name="profile.image_user" component="div"  className="invalid-feedback" />            
         </div>
 
         <div className={styles.form_group}>
           <label htmlFor="profile.description">Description:</label>
-          <Field name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
+          <Field data-cy="description-label" name="profile.description" type="text" value={values.profile.description} onBlur={handleBlur}
           className={ 'form-control' + (getIn(errors, 'profile.description') && getIn(touched, 'profile.description') ? ' is-invalid' : '') } />
           <ErrorMessage name="profile.description" component="div" className="invalid-feedback" />            
         </div>
 
         <div className={styles.form_group}>
           <label htmlFor="profile.birth_place">Birth place:</label>
-          <Field name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
+          <Field data-cy="birth-place-label" name="profile.birth_place" type="text" value={values.profile.birth_place} onBlur={handleBlur}
           className={ 'form-control' + (getIn(errors, 'profile.birth_place') && getIn(touched, 'profile.birth_place') ? ' is-invalid' : '') } />
           <ErrorMessage name="profile.birth_place" component="div" className="invalid-feedback" />            
         </div>
@@ -175,7 +175,7 @@ return(
           <ErrorMessage name="profile.birth_date" component="div" className="invalid-feedback" />
         </div>
 
-        <Button type="submit" className={styles.submit}>Edit</Button>
+        <Button data-cy="profile-form-btn" type="submit" className={styles.submit}>Edit</Button>
           
         <ConfirmDialog title="Delete User" description="The user will be permanently deleted, are you sure you want to delete it?">
           {(confirm) => (
