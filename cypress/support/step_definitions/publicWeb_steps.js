@@ -81,4 +81,5 @@ When('When I searh an article of {string}', (articleName) => {
 Then('I see one article of {string} user', (userName) => {
   cy.get('.article__list > article').its('length') .should('eq', 1);
   cy.get('.article__list > article > small > a ').contains(userName);
+  cy.url().should('be', `${url}?search=stencil`);
 });
