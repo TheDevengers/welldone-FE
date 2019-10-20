@@ -33,13 +33,13 @@ Then('He see the create article form', () => {
 
 Then('He fill in the form and send it', () => {
   cy.get('[data-cy=article-title]')
-    .type('Titulo nuevo', { delay: 100 });
+    .type('What is LitElement / LitHTML?', { delay: 100 });
   cy.get('[data-cy=article-intro]')
-    .type('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
+    .type('LitElement makes it easy to define Web Components – ideal for sharing elements across your organization or building a UI design system.');
   cy.get('[data-cy=article-image]')
     .type('https://cdn.auth0.com/blog/logos/polymer-project.png');
   cy.get('[data-cy=article-content]')
-    .type('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis aenean et tortor at risus');
+    .type('LitElement’s simple, familiar development model makes it easier than ever to build Web Components. Express your UI declaratively, as a function of state. No need to learn a custom templating language – you can use the full power of JavaScript in your templates. Elements update automatically when their properties change.');
   cy.get('[data-cy=category-checkbox-1]').click();
   cy.get('[data-cy=create-article-btn]').click();
 });
