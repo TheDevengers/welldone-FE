@@ -1,5 +1,5 @@
 {
-  "id": 7,
+  "id": 11,
   "first_name": "The",
   "last_name": "Rock",
   "email": "test@gmail.com",
@@ -9,6 +9,6 @@
     "description": "Lorem ipsum doldfor sit ameconsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "birth_date": "2019-10-08",
     "birth_place": "Madrid",
-    "image_user": "https://i.kym-cdn.com/photos/images/original/000/970/542/3cd.jpg"
+    "image_user": null
   }
 }
