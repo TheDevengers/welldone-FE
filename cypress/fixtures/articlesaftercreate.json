@@ -1,0 +1,74 @@
+[
+  {
+    "id": 56,
+    "title": "State Management with React Hooks",
+    "introduction": "Today, we are going to explore it and develop a custom Hook to manage global states — an easier to use method than Redux, and more performant than Context API.",
+    "author": 7,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Frontend"
+      },
+      {
+        "id": 4,
+        "name": "developer"
+      }
+    ],
+    "image": "https://makeitreal.camp/assets/react-logo-ac85b6b5793992bc49365c389fe88d09b100c758d6981653724ad613764911b2.png",
+    "publication_date": "2019-10-20T16:36:16+02:00"
+  },
+  {
+    "id": 57,
+    "title": "Introduction to Node & Express",
+    "introduction": "Node is a JavaScript environment built on the same JavaScript engine used in Google’s Chrome web browser. It has some great features that make it an attractive choice for building server-side application middle tiers, including web servers and web se",
+    "author": 7,
+    "categories": [
+      {
+        "id": 5,
+        "name": "code"
+      },
+      {
+        "id": 6,
+        "name": "Backend"
+      }
+    ],
+    "image": "http://pluspng.com/img-png/nodejs-logo-png--435.png",
+    "publication_date": "2019-10-20T16:39:25+02:00"
+  },
+  {
+    "id": 58,
+    "title": "Web Components with Stencil.js",
+    "introduction": "Stencil.js is relatively new Web Components compiler created by Ionic team. It takes popular modern web development concepts (such as Virtual DOM, async rendering, reactive event flow and TSX) and creates standard-based web component code.",
+    "author": 7,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Web components"
+      },
+      {
+        "id": 2,
+        "name": "Frontend"
+      }
+    ],
+    "image": "http://blog.enriqueoriol.com/wp-content/uploads/2017/09/stencilLogo.png",
+    "publication_date": "2019-10-20T17:26:47+02:00"
+  },
+  {
+    "id": 59,
+    "title": "What is LitElement / LitHTML?",
+    "introduction": "LitElement makes it easy to define Web Components – ideal for sharing elements across your organization or building a UI design system.",
+    "author": 7,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Web components"
+      },
+      {
+        "id": 2,
+        "name": "Frontend"
+      }
+    ],
+    "image": "https://cdn.auth0.com/blog/logos/polymer-project.png",
+    "publication_date": "2019-10-16T23:26:01.582621+02:00"
+  }
+]

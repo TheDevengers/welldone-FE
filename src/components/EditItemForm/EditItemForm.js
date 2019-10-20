@@ -53,13 +53,14 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
             error={errors.title && touched.title}
             onChange={handleChange}
             value={values.title}
+            data-cy="edit-title-item"
           />
           {errors.title && touched.title ? (
             <div className={styles.error}>{errors.title}</div>
           ) : null}
         </div>
         <div className={styles.form_group}>
-          <label className={styles.form_label} htmlFor="password">Introduction:</label>
+          <label className={styles.form_label} htmlFor="text">Introduction:</label>
           <Input
             className={styles.input}
             type="text"
@@ -68,6 +69,7 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
             error={errors.introduction && touched.introduction}
             onChange={handleChange}
             value={values.introduction}
+            data-cy="edit-introduction-item"
           />
           {errors.introduction && touched.introduction ? (
             <div className={styles.error}>{errors.introduction}</div>
@@ -99,6 +101,7 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
             error={errors.body && touched.body}
             onChange={handleChange}
             value={values.body}
+            data-cy="edit-content-item"
           />
           {errors.body && touched.body ? (
             <div className={styles.error}>{errors.body}</div>
@@ -120,7 +123,7 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
             <div className={styles.error}>{errors.categories}</div>
           ) : null}
         </div>
-        <Button className={styles.submit} type="submit">Edit</Button>
+        <Button data-cy="edit-item-btn" className={styles.submit} type="submit">Edit</Button>
       </form>
     )}
   </Formik>

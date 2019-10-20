@@ -55,6 +55,7 @@ const Login = () => (
               error={errors.username && touched.username}
               onChange={handleChange}
               value={values.username}
+              data-cy="username-field"
             />
             {errors.username && touched.username ? (
               <div className={styles.error}>{errors.username}</div>
@@ -69,19 +70,20 @@ const Login = () => (
               error={errors.password && touched.password}
               onChange={handleChange}
               value={values.password}
+              data-cy="password-field"
             />
             {errors.password && touched.password ? (
               <div className={styles.error}>{errors.password}</div>
             ) : null}
           </div>
-          <Button type="submit">Log in</Button>
+          <Button data-cy="submit" type="submit">Log in</Button>
         </form>
       )}
     </Formik>
     <div className={styles.signup_container}>
       <p className={styles.signup_text}>Don't have an account yet?</p>
       <Link className={styles.link} to="/signup">
-        <Button type="submit">Sign up</Button>
+        <Button data-cy="signup-field" type="submit">Sign up</Button>
       </Link>
     </div>
   </div>

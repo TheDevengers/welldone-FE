@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Web components"
+  },
+  {
+    "id": 2,
+    "name": "Frontend"
+  },
+  {
+    "id": 3,
+    "name": "back"
+  },
+  {
+    "id": 4,
+    "name": "developer"
+  },
+  {
+    "id": 5,
+    "name": "code"
+  },
+  {
+    "id": 6,
+    "name": "Backend"
+  }
+]

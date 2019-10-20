@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint src"
   },
@@ -42,7 +42,17 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^3.4.1",
+    "cypress-cucumber-preprocessor": "^1.16.2",
     "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.5"
+  },
+ "cypress-cucumber-preprocessor": {
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
