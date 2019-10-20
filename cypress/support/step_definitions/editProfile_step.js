@@ -1,19 +1,16 @@
 /* global Given, When, Then, cy */
 import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-beforeEach(() => {
+  Before(() => {
+    cy.server();
+    cy.route('GET', '/api/v1/users/11', 'fixture:profile')
+    .as('profileRequest');
+    cy.route('GET', '/api/v1/articles', 'fixture:articles')
+    .as('articlesRequest');
+  });
+
+  Given('An existing user looged into the app', () => {
   cy.visit('/login');
-});
-
-Before(() => {
-  cy.server();
-  cy.route('GET', '/api/v1/users/11', 'fixture:profile')
-  .as('profileRequest');
-  cy.route('GET', '/api/v1/articles', 'fixture:articles')
-  .as('articlesRequest');
-});
-
-Given('An existing user looged into the app', () => {
   cy.login();
   cy.wait('@profileRequest');
   cy.url().should('be', '/');
