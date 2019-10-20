@@ -28,7 +28,7 @@ const Login = () => (
         password: ''
       }}
       validationSchema={LoginSchema}
-      onSubmit={async (values, { setSubmitting, setErrors, setValues, resetForm }) => 
+      onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => 
         {
           var error = false;
           error = await doLogin(values);

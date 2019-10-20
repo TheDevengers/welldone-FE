@@ -8,12 +8,14 @@ const { set, remove } = cookieStorage();
 export const doLogin =  (values) =>
   postUser(values)
   .then(({ access: accessKey, username, id }) => {
+    console.log('success login');
     set('accessKey', accessKey);
     set('username', username);
     set('id', id);
     window.location.href = '/';
   })
   .catch((err) => {
+    console.log('wrong login');
     return ('user or password is wrong');
   });
 
