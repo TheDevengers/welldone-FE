@@ -15,7 +15,7 @@ const api = () => {
       })
       .then((res) => {
         console.log(res.status);
-        if (res.status!==200){
+        if (res && res.status!==200){
           throw new Error('User or password is wrong');
         }
         return res.json();
