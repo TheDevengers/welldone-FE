@@ -15,14 +15,14 @@ const Item = ({ data, ...props }) => {
       <div className={styles.resume}>
         <div className={styles.content_container}>
           <div className={styles.nav_content}>
-            <h1 className={styles.content_title}>{data.title}</h1>
+            <h1 data-cy={`article-${data.id}-title`} className={styles.content_title}>{data.title}</h1>
             <div className={styles.icons}>
               {
                 props.tabType === 'articles' ? (
                   <>
                     <MdDelete data-cy={`delete-article-${data.id}`} size={SIZE} onClick={() => props.deleteArticle(data.id)} />
                     <Link className={styles.link} to={`/edit-article/${data.id}`}>
-                      <MdModeEdit size={SIZE} />
+                      <MdModeEdit data-cy={`edit-article-${data.id}`} size={SIZE} />
                     </Link>
                   </>
                 )
@@ -32,7 +32,7 @@ const Item = ({ data, ...props }) => {
           <p className={styles.item_description}>{data.introduction}</p>
           <em>{new Date(data.publication_date).toLocaleDateString()}</em>
         </div>
-        <div className={styles.btn_container}>
+        <div data-cy="btn-container" className={styles.btn_container}>
           {data.categories.map((elem) =>
             <div key={elem.id}>
               <button className={styles.button}>

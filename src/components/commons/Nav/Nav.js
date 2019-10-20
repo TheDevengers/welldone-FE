@@ -21,7 +21,7 @@ const Nav = () => {
           <a data-cy="create-article" className={`nav-link ${styles.icon}`} alt="article" href="/create-article"><TiDocumentAdd size={SIZE} /></a>
         </li>
         <li>
-          <a className={`nav-link ${styles.icon}`} onClick={logout}><MdExitToApp size={SIZE} /></a>
+          <a data-cy="logout-btn" className={`nav-link ${styles.icon}`} onClick={logout}><MdExitToApp size={SIZE} /></a>
         </li>
       </ul>
 
