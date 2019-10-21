@@ -1,5 +1,6 @@
 import cookieStorage from '../persistence/cookieStorage';
 import { errorHandler } from './errorHandler';
+import { reject } from 'q';
 const { get } = cookieStorage();
 
 const api = () => {
@@ -12,7 +13,13 @@ const api = () => {
         },
         body: JSON.stringify(data),
       })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.status);
+        if (res && res.status!==200){
+          throw new Error('User or password is wrong');
+        }
+        return res.json();
+      })
       .then((articles) => articles)
       .catch((error) => console.log('Error:', error));
     },
