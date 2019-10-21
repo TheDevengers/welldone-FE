@@ -1,11 +1,8 @@
 /* global Given, When, Then, cy */
 import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-beforeEach(() => {
-  cy.visit('/login');
-});
-
 Given('I logged into the app', () => {
+  cy.visit('/login');
   cy.login();
   cy.url().should('be', '/');
 });

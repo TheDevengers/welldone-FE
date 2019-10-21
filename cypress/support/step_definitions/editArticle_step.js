@@ -1,10 +1,6 @@
 /* global Given, When, Then, cy */
 import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-beforeEach(() => {
-  cy.visit('/login');
-});
-
 Before(() => {
   cy.server();
   cy.route('GET', '/api/v1/categories', 'fixture:categories')
@@ -14,6 +10,7 @@ Before(() => {
 });
 
 Given('An user into home page', () => {
+  cy.visit('/login');
   cy.login();
   cy.url().should('be', '/');
   cy.wait('@articlesRequest');

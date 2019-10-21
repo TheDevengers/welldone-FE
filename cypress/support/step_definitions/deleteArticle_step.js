@@ -1,15 +1,11 @@
 /* global Given, When, Then, cy */
 import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-beforeEach(() => {
-  cy.visit('/login');
-});
-
 Before(() => {
   cy.server();
   cy.route('GET', '/api/v1/articles', 'fixture:articles')
     .as('articlesRequest');
-  cy.route({
+    cy.route({
     url: '/api/v1/articles/56',
     method: 'DELETE',
     status: 204,
@@ -17,6 +13,7 @@ Before(() => {
 });
 
 Given('An existing user on the main view', () => {
+  cy.visit('/login');
   cy.login();
   cy.url().should('be', '/');
   cy.wait('@articlesRequest');

@@ -3,7 +3,7 @@
     "id": 56,
     "title": "State Management with React Hooks",
     "introduction": "Today, we are going to explore it and develop a custom Hook to manage global states — an easier to use method than Redux, and more performant than Context API.",
-    "author": 7,
+    "author": 11,
     "categories": [
       {
         "id": 2,
@@ -21,7 +21,7 @@
     "id": 57,
     "title": "Introduction to Node & Express",
     "introduction": "Node is a JavaScript environment built on the same JavaScript engine used in Google’s Chrome web browser. It has some great features that make it an attractive choice for building server-side application middle tiers, including web servers and web se",
-    "author": 7,
+    "author": 11,
     "categories": [
       {
         "id": 5,
@@ -39,7 +39,7 @@
     "id": 58,
     "title": "Web Components with Stencil.js",
     "introduction": "Stencil.js is relatively new Web Components compiler created by Ionic team. It takes popular modern web development concepts (such as Virtual DOM, async rendering, reactive event flow and TSX) and creates standard-based web component code.",
-    "author": 7,
+    "author": 11,
     "categories": [
       {
         "id": 1,
