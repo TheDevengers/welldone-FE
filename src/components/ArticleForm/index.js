@@ -23,12 +23,11 @@ class ArticleForm extends React.Component{
       try {
         const categories = await retrieveCategories();
         if(categories && categories.length){
-          categories.map((category) => {
+          categories.map((category) =>
             this.setState((state) => {
                 state.categories.push(Object.assign({}, category, { checked: false }));
                 return state;
-            });
-          });
+            }));
         }
       } catch(err) {
         this.props.handleError(err, () => {
