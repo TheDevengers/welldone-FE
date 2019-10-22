@@ -30,7 +30,7 @@ const Login = () => (
       validationSchema={LoginSchema}
       onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => 
         {
-          var error = false;
+          let error = false;
           error = await doLogin(values);
           if (error){
             resetForm();
