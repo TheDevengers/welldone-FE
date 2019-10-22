@@ -62,16 +62,17 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label} htmlFor="text">Introduction:</label>
-          <Input
-            className={styles.input}
+          <textarea
+            className={`${styles.input} ${styles.textarea}`}
             type="text"
             name="introduction"
             placeholder="Enter a introduction of article..."
             error={errors.introduction && touched.introduction}
             onChange={handleChange}
             value={values.introduction}
+            rows="5"
             data-cy="edit-introduction-item"
-          />
+          ></textarea>
           {errors.introduction && touched.introduction ? (
             <div className={styles.error}>{errors.introduction}</div>
           ) : null}
@@ -110,16 +111,17 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label} htmlFor="text">Content:</label>
-          <Input
-            className={styles.input}
+          <textarea
+            className={`${styles.input} ${styles.textarea}`}
             type="text"
             name="body"
             placeholder="Enter a content of article..."
             error={errors.body && touched.body}
             onChange={handleChange}
             value={values.body}
+            rows="20"
             data-cy="edit-content-item"
-          />
+          ></textarea>
           {errors.body && touched.body ? (
             <div className={styles.error}>{errors.body}</div>
           ) : null}
