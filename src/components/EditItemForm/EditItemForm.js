@@ -24,7 +24,7 @@ const EditItemSchema = Yup.object().shape({
   categories: Yup.array(),
 });
 
-const EditItemForm = ({ dataArticle, dataCategories }) => (
+const EditItemForm = ({ dataArticle, dataCategories, defaultCategories, currentCategoryValue }) => (
   <Formik
     enableReinitialize={true}
     initialValues={{
@@ -33,7 +33,7 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
       image: dataArticle.image,
       state: dataArticle.state,
       body: dataArticle.body,
-      categories: []
+      categories: defaultCategories.map((elem) => { return { id: elem.id }; })
     }}
     validationSchema={EditItemSchema}
     onSubmit={(values) => {
@@ -131,15 +131,9 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
           <Select
             closeMenuOnSelect={false}
             components={animatedComponents}
-            onChange={(elements) => {
-              if(!elements) {
-                values.categories = [];
-              } else {
-                values.categories = elements.map((elem) => { return { id: elem.id }; });
-              }
-              return values.categories;
-            }}
+            onChange={(elements) => currentCategoryValue(elements)}
             isMulti
+            value={defaultCategories}
             options={dataCategories}
           />
           {errors.categories ? (

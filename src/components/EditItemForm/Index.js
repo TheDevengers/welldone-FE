@@ -15,7 +15,8 @@ class EditItem extends Component {
     this.state = {
       id: props.match.params.id,
       articleDetail: {},
-      categories: []
+      categories: [],
+      defaultCategories: []
     };
   }
 
@@ -32,7 +33,7 @@ class EditItem extends Component {
     });
 
     getArticle(this.state.id)
-    .then((article) => this.setState({ articleDetail: article }))
+    .then((article) => this.setState({ articleDetail: article, defaultCategories: this._formatCategories(article.categories) }))
     .catch((err) => {
       this.props.handleError(err, () => {
         toast.error('Unable to load articles', {
@@ -54,14 +55,24 @@ class EditItem extends Component {
     }
   }
 
+  currentCategoryValue = (elements) => {
+    if(!elements) {
+      return this.setState({ defaultCategories: [] });
+    }
+      return this.setState({ defaultCategories: elements });
+  }
+
   render() {
-    const { articleDetail, categories } = this.state;
+    const { articleDetail, categories, defaultCategories } = this.state;
+
     return(
       <Fragment>
         <Nav />
         <EditItemForm
           dataArticle={articleDetail}
           dataCategories={categories}
+          defaultCategories={defaultCategories}
+          currentCategoryValue={this.currentCategoryValue}
         />
       </Fragment>
     );
