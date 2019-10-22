@@ -1,5 +1,4 @@
 import api from '../utils/api';
-import { reject } from 'q';
 import cookieStorage from './cookieStorage';
 
 const { postUser } = api();
