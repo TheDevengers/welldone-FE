@@ -132,7 +132,11 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
             closeMenuOnSelect={false}
             components={animatedComponents}
             onChange={(elements) => {
-              values.categories = elements.map((elem) => { return { id: elem.id }; });
+              if(!elements) {
+                values.categories = [];
+              } else {
+                values.categories = elements.map((elem) => { return { id: elem.id }; });
+              }
               return values.categories;
             }}
             isMulti
