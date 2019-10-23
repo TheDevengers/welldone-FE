@@ -1,6 +1,5 @@
 import cookieStorage from '../persistence/cookieStorage';
 import { errorHandler } from './errorHandler';
-import { reject } from 'q';
 const { get } = cookieStorage();
 
 const api = () => {

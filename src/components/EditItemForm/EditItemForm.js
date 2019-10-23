@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import styles from './editItemForm.module.css';
 
 import { Input, Button } from '../commons';
-// import Nav from '../commons/Nav/Nav.js';
 
 import { editItem } from '../../persistence/edit';
 
@@ -19,20 +18,22 @@ const EditItemSchema = Yup.object().shape({
   introduction: Yup.string().required('Introduction is required').min(4, 'Title must be between 4 and 150 characters')
     .max(250, 'Title must be between 4 and 150 characters'),
   state: Yup.string().required('State is required'),
+  image: Yup.string().required('State is required'),
   body: Yup.string().required('Body is required').min(4, 'Title must be between 4 and 150 characters')
     .max(2000, 'Title must be between 4 and 150 characters'),
   categories: Yup.array(),
 });
 
-const EditItemForm = ({ dataArticle, dataCategories }) => (
+const EditItemForm = ({ dataArticle, dataCategories, defaultCategories, currentCategoryValue }) => (
   <Formik
     enableReinitialize={true}
     initialValues={{
       title: dataArticle.title,
       introduction: dataArticle.introduction,
+      image: dataArticle.image,
       state: dataArticle.state,
       body: dataArticle.body,
-      categories: []
+      categories: defaultCategories.map((elem) => { return { id: elem.id }; })
     }}
     validationSchema={EditItemSchema}
     onSubmit={(values) => {
@@ -61,16 +62,17 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label} htmlFor="text">Introduction:</label>
-          <Input
-            className={styles.input}
+          <textarea
+            className={`${styles.input} ${styles.textarea}`}
             type="text"
             name="introduction"
             placeholder="Enter a introduction of article..."
             error={errors.introduction && touched.introduction}
             onChange={handleChange}
             value={values.introduction}
+            rows="5"
             data-cy="edit-introduction-item"
-          />
+          ></textarea>
           {errors.introduction && touched.introduction ? (
             <div className={styles.error}>{errors.introduction}</div>
           ) : null}
@@ -92,17 +94,34 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
           ) : null}
         </div>
         <div className={styles.form_group}>
-          <label className={styles.form_label} htmlFor="text">Content:</label>
+          <label className={styles.form_label} htmlFor="text">Image:</label>
           <Input
             className={styles.input}
+            type="text"
+            name="image"
+            placeholder="Enter url of image..."
+            error={errors.image && touched.image}
+            onChange={handleChange}
+            value={values.image}
+            data-cy="edit-image-item"
+          />
+          {errors.image && touched.image ? (
+            <div className={styles.error}>{errors.image}</div>
+          ) : null}
+        </div>
+        <div className={styles.form_group}>
+          <label className={styles.form_label} htmlFor="text">Content:</label>
+          <textarea
+            className={`${styles.input} ${styles.textarea}`}
             type="text"
             name="body"
             placeholder="Enter a content of article..."
             error={errors.body && touched.body}
             onChange={handleChange}
             value={values.body}
+            rows="20"
             data-cy="edit-content-item"
-          />
+          ></textarea>
           {errors.body && touched.body ? (
             <div className={styles.error}>{errors.body}</div>
           ) : null}
@@ -112,11 +131,9 @@ const EditItemForm = ({ dataArticle, dataCategories }) => (
           <Select
             closeMenuOnSelect={false}
             components={animatedComponents}
-            onChange={(elements) => {
-              values.categories = elements.map((elem) => { return { id: elem.id }; });
-              return values.categories;
-            }}
+            onChange={(elements) => currentCategoryValue(elements)}
             isMulti
+            value={defaultCategories}
             options={dataCategories}
           />
           {errors.categories ? (

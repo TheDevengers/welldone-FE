@@ -18,6 +18,12 @@
   width: 100%;
 }
 
+.textarea {
+  resize: none;
+  border: 1px solid #ccc;
+  padding: 8px 0 8px 10px;
+}
+
 .error {
   color: red;
   padding: 2px;
