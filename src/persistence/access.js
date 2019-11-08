@@ -6,10 +6,11 @@ const { set, remove } = cookieStorage();
 
 export const doLogin =  (values) =>
   postUser(values)
-  .then(({ access: accessKey, username, id }) => {
+  .then(({ access: accessKey, username, sessionid, id }) => {
     console.log('success login');
     set('accessKey', accessKey);
     set('username', username);
+    set('sessionid', sessionid);
     set('id', id);
     window.location.href = '/';
   })
